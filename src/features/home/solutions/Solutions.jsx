@@ -122,9 +122,9 @@ const Solutions = () => {
                                             width="32px"
                                             fill="currentColor"
                                             stroke="currentColor"
-                                            stroke-width=".3"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
+                                            strokeWidth=".3"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
                                             xmlns="http://www.w3.org/2000/svg"
                                             viewBox="0 0 32 32"
                                         >
@@ -159,10 +159,7 @@ const Solutions = () => {
                                     </Icon>
                                     <h3>20 años de tranquilidad</h3>
                                 </Dt>
-                                <Dd>
-                                    Monitorizamos tu sistema y su mantenimiento para que no tengas
-                                    que preocuparte.
-                                </Dd>
+                                <Dd>Monitorizamos tu sistema y su mantenimiento para que no tengas que preocuparte.</Dd>
                             </div>
                             <div>
                                 <Dt>
@@ -184,8 +181,8 @@ const Solutions = () => {
                                     <h3>Coste de energía predecible</h3>
                                 </Dt>
                                 <Dd>
-                                    No te preocupes por los incrementos en el precio de la luz. Tu
-                                    factura no va a subir.
+                                    No te preocupes por los incrementos en el precio de la luz. Tu factura no va a
+                                    subir.
                                 </Dd>
                             </div>
                         </Dl>
@@ -199,17 +196,3 @@ const Solutions = () => {
 };
 
 export default Solutions;
-
-<svg
-    width="1em"
-    height="1em"
-    viewBox="0 0 24 25"
-    fill="none"
-    stroke="currentColor"
-    stroke-width="2"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-    xmlns="http://www.w3.org/2000/svg"
->
-    <path d="M9 19.754v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0v-10a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0v-14a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-</svg>;

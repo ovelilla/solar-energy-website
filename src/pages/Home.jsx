@@ -4,6 +4,8 @@ import Hero from "@features/home/hero";
 import Benefits from "@features/home/benefits";
 import SelfConsumption from "@features/home/self-consumption";
 import Solutions from "@features/home/solutions";
+import Warranty from "@features/home/warranty";
+import Counter from "@features/home/counter";
 
 const Home = () => {
     console.log("Home");
@@ -13,6 +15,8 @@ const Home = () => {
             <Benefits />
             <SelfConsumption />
             <Solutions />
+            <Warranty />
+            <Counter />
             <br />
             <br />
             <br />
