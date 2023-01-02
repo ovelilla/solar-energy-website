@@ -1,11 +1,14 @@
 import { HeroStyled, Container, Title, Paragraph } from "./styles";
 
-import PredictionsSearch from "@features/predictions-search";
+import Predictions from "@features/predictions";
 
 const Hero = () => {
     return (
         <HeroStyled>
-            <img src="/img/paneles-solares-tejado-casa.jpg" alt="Paneles solares en tejado de casa" />
+            <img
+                src="/img/paneles-solares-tejado-casa.jpg"
+                alt="Paneles solares en tejado de casa"
+            />
             <Container>
                 <Title>
                     <span>Energía solar</span>
@@ -13,11 +16,12 @@ const Hero = () => {
                 </Title>
 
                 <Paragraph>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec mi augue. Curabitur nec mauris
-                    porttitor, porta augue eu, ultrices eros. Nunc a facilisis nibh, et efficitur nibh.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec mi augue.
+                    Curabitur nec mauris porttitor, porta augue eu, ultrices eros. Nunc a facilisis
+                    nibh, et efficitur nibh.
                 </Paragraph>
 
-                <PredictionsSearch />
+                <Predictions />
             </Container>
         </HeroStyled>
     );

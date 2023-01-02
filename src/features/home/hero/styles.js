@@ -28,23 +28,28 @@ export const Container = styled.div`
     width: 100%;
     max-width: ${breakpoints.xl}px;
     padding: 96px 16px;
+    padding-top: 120px;
 
     ${media(breakpoints.sm)} {
         padding: 120px 24px;
+        padding-top: 144px;
     }
 
     ${media(breakpoints.md)} {
         gap: 48x;
         padding: 144px 32px;
+        padding-top: 168px;
     }
 
     ${media(breakpoints.lg)} {
         gap: 56px;
         padding: 168px 32px;
+        padding-top: 192px;
     }
 
     ${media(breakpoints.xl)} {
         padding: 192px 32px;
+        padding-top: 216px;
     }
 `;
 
@@ -75,8 +80,12 @@ export const Title = styled.h1`
 `;
 
 export const Paragraph = styled.p`
-    max-width: 50%;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 1.6;
     color: ${white};
+
+    ${media(breakpoints.lg)} {
+        max-width: 50%;
+        font-size: 18px;
+    }
 `;

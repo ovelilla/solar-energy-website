@@ -39,10 +39,11 @@ export const Container = styled.div`
 export const Grid = styled.div`
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-    gap: 96px;
+    gap: 48px;
 
     ${media(breakpoints.md)} {
         grid-template-columns: repeat(2, 1fr);
+        gap: 96px;
     }
 `;
 
@@ -60,11 +61,15 @@ export const Column = styled.div`
     }
 
     h2 {
-        font-size: 48px;
+        font-size: 40px;
         letter-spacing: -1px;
         font-weight: 600;
         line-height: 1.2;
         color: #13192e;
+
+        ${media(breakpoints.md)} {
+            font-size: 48px;
+        }
     }
 
     h3 {

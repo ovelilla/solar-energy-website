@@ -3,13 +3,11 @@ import styled from "@emotion/styled";
 import { white, slate } from "@shared/styles/colors";
 import { breakpoints, media } from "@shared/styles/sizes";
 
-import { MapPinIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
-
 export const Container = styled.div`
     position: relative;
 `;
 
-export const List = styled.ul`
+export const ListStyled = styled.ul`
     overflow: hidden;
     position: absolute;
     top: 0;

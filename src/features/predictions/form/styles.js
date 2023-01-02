@@ -5,9 +5,7 @@ import { breakpoints, media } from "@shared/styles/sizes";
 
 import { MapPinIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
 
-export const Form = styled.form``;
-
-export const Field = styled.div`
+export const FormStyled = styled.form`
     position: relative;
     height: 72px;
     box-shadow: 0px 16px 80px rgb(0 0 0 / 15%);
@@ -27,7 +25,7 @@ export const Field = styled.div`
     }
 `;
 
-export const Container = styled.div`
+export const Field = styled.div`
     z-index: 100;
     display: flex;
     align-items: center;

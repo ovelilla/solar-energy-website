@@ -1,19 +1,31 @@
 import styled from "@emotion/styled";
 
-import { white, transparent, slate } from "@shared/styles/colors";
+import { white, transparent } from "@shared/styles/colors";
 import { shadows } from "@shared/styles/shadows";
 import { breakpoints, media } from "@shared/styles/sizes";
 
 export const HeaderStyled = styled.header`
     display: flex;
     justify-content: center;
-    z-index: 200;
+    z-index: 600;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background-color: ${(p) => (p.isScroll ? white : transparent)};
-    box-shadow: ${(p) => (p.isScroll ? shadows.md : shadows.none)};
+    background-color: ${(p) => {
+        if (p.isScroll || (p.sidebar.isOpen && !p.sidebar.isClosing)) {
+            return white;
+        } else {
+            return transparent;
+        }
+    }};
+    box-shadow: ${(p) => {
+        if (p.isScroll || (p.sidebar.isOpen && !p.sidebar.isClosing)) {
+            return shadows.md;
+        } else {
+            return shadows.none;
+        }
+    }};
     transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 `;
 
@@ -77,5 +89,57 @@ export const Button = styled.button`
 
     &:hover {
         box-shadow: 0 10px 40px -5px rgb(0 0 0 / 30%);
+    }
+`;
+
+export const Hamburguer = styled.button`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    width: 40px;
+    height: 40px;
+    margin-left: auto;
+    -webkit-tap-highlight-color: transparent;
+
+    ${media(breakpoints.md)} {
+        gap: 7px;
+    }
+
+    ${media(breakpoints.lg)} {
+        display: none;
+    }
+
+    ${(p) => {
+        if (p.sidebar.isOpen && !p.sidebar.isClosing) {
+            return `
+                span:nth-of-type(1) {
+                    transform: translateY(0) rotate(45deg);
+                }
+        
+                span:nth-of-type(2) {
+                    transform: translateX(-10px);
+                    opacity: 0;
+                }
+        
+                span:nth-of-type(3) {
+                    transform: translateY(1px) rotate(-45deg);
+                }
+            `;
+        }
+    }}
+
+    span {
+        width: 30px;
+        height: 4px;
+        background-color: #141b2f;
+        border-radius: 4px;
+        transform-origin: left;
+        transition: transform, opacity, 0.3s ease;
+
+        ${media(breakpoints.md)} {
+            width: 32px;
+        }
     }
 `;

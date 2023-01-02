@@ -1,8 +1,35 @@
-import { WarrantyStyled, Container, Grid, Column, StyledLink, Chart, Bar, Timeline } from "./styles";
+import { useState, useEffect, useRef } from "react";
+
+import {
+    WarrantyStyled,
+    Container,
+    Grid,
+    Column,
+    StyledLink,
+    Chart,
+    Bar,
+    Timeline,
+} from "./styles";
+
+import useScrollPosition from "@hooks/useScrollPosition";
 
 const Warranty = () => {
+    const [isVisible, setIsVisible] = useState(false);
+
+    const scrollPosition = useScrollPosition();
+    const warrantyRef = useRef(null);
+
+    useEffect(() => {
+        const counter = warrantyRef.current;
+        const rect = counter.getBoundingClientRect();
+
+        if (rect.top < window.innerHeight && rect.bottom > 0 && !isVisible) {
+            setIsVisible(true);
+        }
+    }, [scrollPosition]);
+
     return (
-        <WarrantyStyled>
+        <WarrantyStyled ref={warrantyRef}>
             <Container>
                 <Grid>
                     <Column>
@@ -11,8 +38,8 @@ const Warranty = () => {
                         <h3>Hasta 20 años para paneles</h3>
 
                         <p>
-                            Nuestra garantía extendida asegura el perfecto funcionamiento de cada instalación. Además de
-                            energía limpia, ofrecemos tranquilidad.
+                            Nuestra garantía extendida asegura el perfecto funcionamiento de cada
+                            instalación. Además de energía limpia, ofrecemos tranquilidad.
                         </p>
 
                         <ul>
@@ -30,7 +57,9 @@ const Warranty = () => {
                                         d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                                     />
                                 </svg>
-                                <span>Hasta 20 años para paneles. 10 años para baterías en alquiler.</span>
+                                <span>
+                                    Hasta 20 años para paneles. 10 años para baterías en alquiler.
+                                </span>
                             </li>
 
                             <li>
@@ -47,7 +76,9 @@ const Warranty = () => {
                                         d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                                     />
                                 </svg>
-                                <span>25 años de garantía de producción del fabricante en los paneles.</span>
+                                <span>
+                                    25 años de garantía de producción del fabricante en los paneles.
+                                </span>
                             </li>
                         </ul>
 
@@ -56,17 +87,17 @@ const Warranty = () => {
 
                     <Column>
                         <Chart>
-                            <Bar>
+                            <Bar isVisible={isVisible}>
                                 <p>Estándar por ley del sector (3 años)</p>
                                 <div></div>
                             </Bar>
 
-                            <Bar>
+                            <Bar isVisible={isVisible}>
                                 <p>Con compra directa: 5 años</p>
                                 <div></div>
                             </Bar>
 
-                            <Bar>
+                            <Bar isVisible={isVisible}>
                                 <p>Para clientes de alquiler: 20 años</p>
                                 <div></div>
                             </Bar>

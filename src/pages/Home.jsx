@@ -8,7 +8,6 @@ import Warranty from "@features/home/warranty";
 import Counter from "@features/home/counter";
 
 const Home = () => {
-    console.log("Home");
     return (
         <main>
             <Hero />

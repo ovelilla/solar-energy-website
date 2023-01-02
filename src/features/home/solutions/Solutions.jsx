@@ -97,7 +97,7 @@ const Solutions = () => {
                             </div>
                         </Dl>
 
-                        <StyledLink to="/">Solicitar tu propuesta de autoconsumo</StyledLink>
+                        <StyledLink to="/">Solicitar propuesta</StyledLink>
                     </Card>
 
                     <Card>
@@ -187,7 +187,7 @@ const Solutions = () => {
                             </div>
                         </Dl>
 
-                        <StyledLink to="/">Solicitar tu propuesta de autoconsumo</StyledLink>
+                        <StyledLink to="/">Solicitar propuesta</StyledLink>
                     </Card>
                 </Grid>
             </Container>

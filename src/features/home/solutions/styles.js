@@ -40,10 +40,22 @@ export const Container = styled.div`
 export const Grid = styled.div`
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-    gap: 96px;
+    gap: 48px;
 
     ${media(breakpoints.md)} {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    ${media(breakpoints.lg)} {
+        gap: 64px;
+    }
+
+    ${media(breakpoints.xl)} {
+        gap: 80px;
+    }
+
+    ${media(breakpoints.xxl)} {
+        gap: 96px;
     }
 `;
 
@@ -51,10 +63,14 @@ export const Card = styled.div`
     display: flex;
     flex-direction: column;
     gap: 32px;
-    padding: 48px;
+    padding: 32px;
     border-radius: 8px;
     background-color: ${white};
     box-shadow: 0px 16px 80px rgb(0 0 0 / 10%);
+
+    ${media(breakpoints.lg)} {
+        padding: 48px;
+    }
 `;
 
 export const Title = styled.p`
@@ -72,24 +88,35 @@ export const Price = styled.p`
     gap: 8px;
 
     span:nth-of-type(1) {
-        font-size: 24px;
+        font-size: 20px;
         font-weight: 500;
+
+        ${media(breakpoints.lg)} {
+            font-size: 24px;
+        }
     }
 
     span:nth-of-type(2) {
-        font-size: 56px;
+        font-size: 48px;
         font-weight: 700;
+
+        ${media(breakpoints.lg)} {
+            font-size: 56px;
+        }
     }
 
     span:nth-of-type(3) {
-        font-size: 24px;
+        font-size: 20px;
         font-weight: 500;
         color: ${slate[400]};
+
+        ${media(breakpoints.lg)} {
+            font-size: 24px;
+        }
     }
 `;
 
 export const Description = styled.p`
-    font-size: 18px;
     color: ${slate[600]};
 `;
 
@@ -121,6 +148,7 @@ export const Icon = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
     width: 48px;
     height: 48px;
     border-radius: 50%;

@@ -1,8 +1,8 @@
-import { Container, List, Item } from "./styles";
+import { Container, ListStyled, Item } from "./styles";
 
 import useProposal from "@hooks/useProposal";
 
-const PredictionsList = ({ predictions, setPredictions, setInputValue, selectedIndex, setSelectedIndex }) => {
+const List = ({ predictions, setPredictions, setInputValue, selectedIndex, setSelectedIndex }) => {
     const { setProposal } = useProposal();
 
     const handleClick = (prediction) => {
@@ -18,7 +18,7 @@ const PredictionsList = ({ predictions, setPredictions, setInputValue, selectedI
     return (
         <Container>
             {predictions.length > 0 && (
-                <List>
+                <ListStyled>
                     {predictions.map((prediction, index) => (
                         <Item
                             key={prediction.place_id}
@@ -31,10 +31,10 @@ const PredictionsList = ({ predictions, setPredictions, setInputValue, selectedI
                             {prediction.terms[0].value}, {prediction.terms[1].value}
                         </Item>
                     ))}
-                </List>
+                </ListStyled>
             )}
         </Container>
     );
 };
 
-export default PredictionsList;
+export default List;

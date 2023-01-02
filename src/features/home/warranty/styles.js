@@ -39,10 +39,11 @@ export const Container = styled.div`
 export const Grid = styled.div`
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-    gap: 96px;
+    gap: 48px;
 
     ${media(breakpoints.md)} {
         grid-template-columns: repeat(2, 1fr);
+        gap: 96px;
     }
 `;
 
@@ -131,22 +132,36 @@ export const Bar = styled.div`
     color: ${slate[700]};
 
     div {
+        width: 0;
         height: 48px;
         border-radius: 8px;
+        transition: width 3s ease-in-out;
     }
 
     &:nth-of-type(1) div {
-        width: calc(3 * 100% / 20);
+        ${(p) => {
+            if (p.isVisible) {
+                return `width: calc(3 * 100% / 20);`;
+            }
+        }}
         background-color: #f0f3fd;
     }
 
     &:nth-of-type(2) div {
-        width: calc(5 * 100% / 20);
+        ${(p) => {
+            if (p.isVisible) {
+                return `width: calc(5 * 100% / 20);`;
+            }
+        }}
         background-color: #e0e7fb;
     }
 
     &:nth-of-type(3) div {
-        width: calc(100%);
+        ${(p) => {
+            if (p.isVisible) {
+                return `width: calc(100%);`;
+            }
+        }}
         background-color: #d1dbf9;
     }
 `;
