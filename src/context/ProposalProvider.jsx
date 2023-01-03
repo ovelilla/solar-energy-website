@@ -9,12 +9,16 @@ export const ProposalProvider = ({ children }) => {
     const [proposal, setProposal] = useState({
         placeId: "",
         address: "",
+        latitude: "",
+        longitude: "",
     });
 
     const resetProposal = () => {
         setProposal({
             placeId: "",
             address: "",
+            latitude: "",
+            longitude: "",
         });
     };
 

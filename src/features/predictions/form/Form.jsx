@@ -23,11 +23,18 @@ const Form = ({
     const { proposal, setProposal, resetProposal } = useProposal();
     const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        if (proposal.placeId) {
-            navigate("/roof");
-        }
+
+        setIsLoading(true);
+
+        setTimeout(() => {
+            setIsLoading(false);
+
+            if (proposal.placeId) {
+                navigate("/roof");
+            }
+        }, 1000);
     };
 
     const handleInput = async (e) => {
@@ -56,6 +63,7 @@ const Form = ({
             setInputValue(predictions[selectedIndex].description);
             setPredictions([]);
             setProposal({
+                ...proposal,
                 placeId: predictions[selectedIndex].place_id,
                 address: predictions[selectedIndex].description,
             });

@@ -3,13 +3,14 @@ import { Container, ListStyled, Item } from "./styles";
 import useProposal from "@hooks/useProposal";
 
 const List = ({ predictions, setPredictions, setInputValue, selectedIndex, setSelectedIndex }) => {
-    const { setProposal } = useProposal();
+    const { proposal, setProposal } = useProposal();
 
     const handleClick = (prediction) => {
         setPredictions([]);
         setInputValue(prediction.description);
         setSelectedIndex(-1);
         setProposal({
+            ...proposal,
             placeId: prediction.place_id,
             address: prediction.description,
         });
