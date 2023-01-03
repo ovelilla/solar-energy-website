@@ -8,7 +8,12 @@ export const HeroStyled = styled.section`
     justify-content: center;
     position: relative;
     width: 100%;
+    height: 100dvh;
     background-color: ${slate[50]};
+
+    ${media(breakpoints.sm)} {
+        height: auto;
+    }
 
     img {
         position: absolute;
