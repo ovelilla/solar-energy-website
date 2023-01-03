@@ -48,6 +48,8 @@ export const Container = styled.div`
 export const Button = styled.button`
     display: flex;
     align-items: center;
+    justify-content: center;
+    flex-grow: 1;
     gap: 8px;
     position: relative;
     height: 48px;
@@ -57,6 +59,10 @@ export const Button = styled.button`
     color: ${white};
     letter-spacing: -0.8px;
     border-radius: 48px;
+
+    ${media(breakpoints.sm)} {
+        flex-grow: 0;
+    }
 
     &::after {
         content: "";
