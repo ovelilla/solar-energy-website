@@ -21,6 +21,7 @@ const Map = () => {
                 },
             ],
             minZoom: 14,
+            scrollwheel: false,
         });
 
         const service = new google.maps.places.PlacesService(map);
