@@ -1,18 +1,9 @@
 import styled from "@emotion/styled";
 
 import { gray } from "@shared/styles/colors";
-import { breakpoints, media, logo, section } from "@shared/styles/sizes";
+import { breakpoints, media } from "@shared/styles/sizes";
 
 export const ProgressStyled = styled.div`
-    position: relative;
-    margin-top: 16px;
-
-    ${media(breakpoints.sm)} {
-        margin-top: 0;
-    }
-`;
-
-export const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -22,7 +13,7 @@ export const Container = styled.div`
     }
 `;
 
-export const Bar = styled.div`
+export const Line = styled.div`
     width: 100%;
     height: 2px;
     background-color: ${gray[200]};
@@ -64,32 +55,23 @@ export const Number = styled.div`
                 border-color: #28365e;
             `;
         }
-    }}/* &.active {
-        color: #28365e;
-        border-color: #28365e;
-    }
-
-    &.completed {
-        color: #fff;
-        background-color: #28365e;
-        border-color: #28365e;
-    } */
+    }}
 `;
 
 export const Text = styled.div`
-    font-size: 14px;
     letter-spacing: -0.4px;
     color: ${gray[400]};
 
-    ${media(breakpoints.sm)} {
-        font-size: 14px;
-    }
-
-    &.active {
-        color: #28365e;
-    }
-
-    &.completed {
-        color: #28365e;
-    }
+    ${(p) => {
+        if (p.isActive) {
+            return `
+                color: #28365e;
+            `;
+        }
+        if (p.isCompleted) {
+            return `
+                color: #28365e;
+            `;
+        }
+    }}
 `;

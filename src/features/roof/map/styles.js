@@ -158,11 +158,11 @@ export const Marker = styled.div`
         z-index: -1;
         content: "";
         position: absolute;
-        top: 12px;
+        top: 8px;
         left: 50%;
         transform: translateX(-50%);
-        width: 32px;
-        height: 32px;
+        width: 24px;
+        height: 24px;
         border-radius: 50%;
         background-color: ${white};
     }

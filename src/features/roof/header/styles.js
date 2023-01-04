@@ -1,7 +1,8 @@
 import styled from "@emotion/styled";
 
+import { slate } from "@shared/styles/colors";
 import { shadows } from "@shared/styles/shadows";
-import { breakpoints, header, logo, section } from "@shared/styles/sizes";
+import { breakpoints, media, header, logo, section } from "@shared/styles/sizes";
 
 export const HederStyled = styled.header`
     display: flex;
@@ -12,7 +13,10 @@ export const HederStyled = styled.header`
     left: 0;
     width: 100%;
     ${section}
-    box-shadow: ${shadows.md};
+
+    ${media(breakpoints.sm)} {
+        border-bottom: 1px solid ${slate[100]};
+    }
 `;
 
 export const Container = styled.div`

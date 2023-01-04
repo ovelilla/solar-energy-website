@@ -17,7 +17,7 @@ const Map = () => {
     useEffect(() => {
         const map = new google.maps.Map(mapRef.current, {
             center: { lat: 40.41695, lng: -3.7035 },
-            zoom: 19,
+            zoom: 18,
             mapTypeId: "satellite",
             tilt: 0,
             disableDefaultUI: true,
