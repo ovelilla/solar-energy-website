@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-import { slate } from "@shared/styles/colors";
+import { gray } from "@shared/styles/colors";
 import { breakpoints, media, logo, section } from "@shared/styles/sizes";
 
 export const ProgressStyled = styled.div`
@@ -11,11 +11,10 @@ export const ProgressStyled = styled.div`
 export const Bar = styled.div`
     position: absolute;
     top: 20px;
-    left: 64px;
-    right: 64px;
-    /* width: 80%; */
-    height: 2px;
-    background-color: ${slate[300]};
+    left: 15%;
+    right: 15%;
+    height: 1px;
+    background-color: ${gray[300]};
 `;
 
 export const Container = styled.div`
@@ -27,6 +26,22 @@ export const Step = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* width: calc(100% / 3); */
+
+    /* &:first-of-type {
+        align-items: flex-start;
+    }
+
+    &:last-of-type {
+        align-items: flex-end;
+    } */
+`;
+
+export const StepContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* position: relative; */
 `;
 
 export const Number = styled.div`
@@ -38,8 +53,8 @@ export const Number = styled.div`
     height: 40px;
     background-color: #ffffff;
     border-radius: 50%;
-    border: 2px solid ${slate[300]};
-    color: ${slate[400]};
+    border: 1px solid ${gray[300]};
+    color: ${gray[400]};
     font-size: 14px;
     font-weight: 500;
 
@@ -58,7 +73,8 @@ export const Number = styled.div`
 export const Text = styled.div`
     font-size: 12px;
     letter-spacing: -0.6px;
-    color: ${slate[400]};
+    /* font-weight: 300; */
+    color: ${gray[400]};
 
     ${media(breakpoints.sm)} {
         font-size: 14px;
