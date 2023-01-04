@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import styled from "@emotion/styled";
 
-import Header from "@features/roof/header";
 import Loading from "@features/roof/loading";
+import Header from "@features/roof/header";
 import Map from "@features/roof/map";
 import Footer from "@features/roof/footer";
 

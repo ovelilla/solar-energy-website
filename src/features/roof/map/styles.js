@@ -18,6 +18,7 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    gap: 16px;
     width: 100%;
     max-width: ${breakpoints.xl}px;
 
@@ -36,7 +37,6 @@ export const Grid = styled.div`
     grid-template-rows: auto 1fr;
     gap: 16px;
     flex-grow: 1;
-    padding: 16px 0 0 0;
     background-color: ${white};
 
     ${media(breakpoints.sm)} {

@@ -3,6 +3,9 @@ import { MapStyled, Container, Grid, Column, MapContainer, Marker } from "./styl
 
 import useWindowSize from "@hooks/useWindowSize";
 import useProposal from "@hooks/useProposal";
+
+import Progress from "@features/roof/progress";
+
 import { breakpoints } from "@shared/styles/sizes";
 
 const Map = () => {
@@ -73,6 +76,8 @@ const Map = () => {
     return (
         <MapStyled>
             <Container>
+                <Progress />
+
                 <Grid>
                     <Column>
                         <h1>Ubica tu tejado</h1>

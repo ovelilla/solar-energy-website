@@ -13,7 +13,6 @@ export const HederStyled = styled.header`
     width: 100%;
     ${section}
     box-shadow: ${shadows.md};
-    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 `;
 
 export const Container = styled.div`
