@@ -36,7 +36,7 @@ export const Grid = styled.div`
     grid-template-rows: auto 1fr;
     gap: 16px;
     flex-grow: 1;
-    padding: 16px 0;
+    padding: 16px 0 0 0;
     background-color: ${white};
 
     ${media(breakpoints.sm)} {
@@ -89,6 +89,14 @@ export const Column = styled.div`
         align-items: center;
         gap: 8px;
         font-weight: 500;
+
+        span {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
 
         svg {
             overflow: visible;

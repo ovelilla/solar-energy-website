@@ -11,7 +11,11 @@ export const FooterStyled = styled.footer`
     left: 0;
     width: 100%;
     ${section}
-    border-top: 1px solid ${slate[100]};
+    
+    ${media(breakpoints.sm)} {
+        border-top: 1px solid ${slate[100]};
+    }
+    
 `;
 
 export const Container = styled.div`
