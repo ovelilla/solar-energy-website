@@ -23,7 +23,7 @@ export const Container = styled.div`
     justify-content: flex-end;
     align-items: center;
     width: 100%;
-    padding: 16px 0;
+    padding: 24px 0;
     max-width: ${breakpoints.xl}px;
 `;
 
