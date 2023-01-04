@@ -36,7 +36,7 @@ export const Grid = styled.div`
     grid-template-rows: auto 1fr;
     gap: 16px;
     flex-grow: 1;
-    padding: 24px 0;
+    padding: 16px 0;
     background-color: ${white};
 
     ${media(breakpoints.sm)} {
@@ -68,10 +68,14 @@ export const Column = styled.div`
     }
 
     h1 {
-        font-size: 32px;
+        font-size: 24px;
         font-weight: 600;
         letter-spacing: -0.8px;
         line-height: 1.2;
+
+        ${media(breakpoints.sm)} {
+            font-size: 32px;
+        }
     }
 
     p:first-of-type {
