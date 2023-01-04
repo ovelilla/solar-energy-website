@@ -6,12 +6,14 @@ const ProposalContext = createContext();
 
 export const ProposalProvider = ({ children }) => {
     const { predictions, setPredictions, fetchPredictions } = usePredictions();
+
     const [proposal, setProposal] = useState({
         placeId: "",
         address: "",
         latitude: "",
         longitude: "",
     });
+    const [step, setStep] = useState(1);
 
     const resetProposal = () => {
         setProposal({
@@ -31,6 +33,8 @@ export const ProposalProvider = ({ children }) => {
                 proposal,
                 setProposal,
                 resetProposal,
+                step,
+                setStep,
             }}
         >
             {children}

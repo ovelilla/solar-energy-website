@@ -6,42 +6,33 @@ import { breakpoints, media, logo, section } from "@shared/styles/sizes";
 export const ProgressStyled = styled.div`
     position: relative;
     margin-top: 16px;
-`;
 
-export const Bar = styled.div`
-    position: absolute;
-    top: 20px;
-    left: 15%;
-    right: 15%;
-    height: 1px;
-    background-color: ${gray[300]};
+    ${media(breakpoints.sm)} {
+        margin-top: 0;
+    }
 `;
 
 export const Container = styled.div`
     display: flex;
+    align-items: center;
     justify-content: space-between;
+
+    ${media(breakpoints.md)} {
+        gap: 8px;
+    }
+`;
+
+export const Bar = styled.div`
+    width: 100%;
+    height: 2px;
+    background-color: ${gray[200]};
 `;
 
 export const Step = styled.div`
     display: flex;
-    flex-direction: column;
     align-items: center;
-    /* width: calc(100% / 3); */
-
-    /* &:first-of-type {
-        align-items: flex-start;
-    }
-
-    &:last-of-type {
-        align-items: flex-end;
-    } */
-`;
-
-export const StepContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* position: relative; */
+    flex-shrink: 0;
+    gap: 8px;
 `;
 
 export const Number = styled.div`
@@ -51,14 +42,29 @@ export const Number = styled.div`
     z-index: 1;
     width: 40px;
     height: 40px;
-    background-color: #ffffff;
+    background-color: ${gray[200]};
     border-radius: 50%;
-    border: 1px solid ${gray[300]};
-    color: ${gray[400]};
+    border: 1px solid ${gray[200]};
+    color: ${gray[500]};
     font-size: 14px;
     font-weight: 500;
 
-    &.active {
+    ${(p) => {
+        if (p.isActive) {
+            return `
+                color: #fff;
+                background-color: #28365e;
+                border-color: #28365e;
+            `;
+        }
+        if (p.isCompleted) {
+            return `
+                color: #fff;
+                background-color: #28365e;
+                border-color: #28365e;
+            `;
+        }
+    }}/* &.active {
         color: #28365e;
         border-color: #28365e;
     }
@@ -67,13 +73,12 @@ export const Number = styled.div`
         color: #fff;
         background-color: #28365e;
         border-color: #28365e;
-    }
+    } */
 `;
 
 export const Text = styled.div`
-    font-size: 12px;
-    letter-spacing: -0.6px;
-    /* font-weight: 300; */
+    font-size: 14px;
+    letter-spacing: -0.4px;
     color: ${gray[400]};
 
     ${media(breakpoints.sm)} {

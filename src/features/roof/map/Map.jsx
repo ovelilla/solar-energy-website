@@ -1,8 +1,8 @@
 import { useEffect, useRef } from "react";
 import { MapStyled, Container, Grid, Column, MapContainer, Marker } from "./styles";
 
-import useWindowSize from "@hooks/useWindowSize";
 import useProposal from "@hooks/useProposal";
+import useWindowSize from "@hooks/useWindowSize";
 
 import Progress from "@features/roof/progress";
 
@@ -10,8 +10,9 @@ import { breakpoints } from "@shared/styles/sizes";
 
 const Map = () => {
     const mapRef = useRef();
-    const { width } = useWindowSize();
+
     const { proposal, setProposal } = useProposal();
+    const { width } = useWindowSize();
 
     useEffect(() => {
         const map = new google.maps.Map(mapRef.current, {

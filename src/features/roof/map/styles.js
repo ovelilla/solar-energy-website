@@ -23,10 +23,12 @@ export const Container = styled.div`
     max-width: ${breakpoints.xl}px;
 
     ${media(breakpoints.sm)} {
+        gap: 24px;
         padding: 24px 0;
     }
 
     ${media(breakpoints.xl)} {
+        gap: 48px;
         padding: 48px 0;
     }
 `;

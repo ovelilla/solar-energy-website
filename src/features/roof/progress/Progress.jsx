@@ -1,47 +1,56 @@
-import { ProgressStyled, Bar, Container, Step, StepContainer, Number, Text } from "./styles";
+import { ProgressStyled, Bar, Container, Step, Number, Text } from "./styles";
 
+import useProposal from "@hooks/useProposal";
 import useWindowSize from "@hooks/useWindowSize";
+
 import { breakpoints } from "@shared/styles/sizes";
 
 const Progress = () => {
+    const { step } = useProposal();
     const { width } = useWindowSize();
 
     return (
         <ProgressStyled>
-            <Bar />
+            {/* <Bar>
+                <span></span>
+            </Bar> */}
+
             <Container>
                 <Step>
-                    {/* <StepContainer> */}
-                        <Number>1</Number>
-                        <Text>Ubica tu tejado</Text>
-                        {/* {width > breakpoints.sm ? (
-                            <Text>Ubica tu tejado</Text>
-                        ) : (
-                            <Text>Tejado</Text>
-                        )} */}
-                    {/* </StepContainer> */}
+                    <Number isActive={step === 1} isCompleted={step > 1}>
+                        1
+                    </Number>
+                    {width > breakpoints.md && (
+                        <Text isActive={step === 1} isCompleted={step > 1}>
+                            Ubica tu tejado
+                        </Text>
+                    )}
                 </Step>
+
+                <Bar isActive={step === 1} />
+
                 <Step>
-                    {/* <StepContainer> */}
-                        <Number>2</Number>
-                        <Text>Define tu consumo</Text>
-                        {/* {width > breakpoints.sm ? (
-                            <Text>Define tu consumo</Text>
-                        ) : (
-                            <Text>Consumo</Text>
-                        )} */}
-                    {/* </StepContainer> */}
+                    <Number isActive={step === 2} isCompleted={step > 2}>
+                        2
+                    </Number>
+                    {width > breakpoints.md && (
+                        <Text isActive={step === 2} isCompleted={step > 2}>
+                            Define tu consumo
+                        </Text>
+                    )}
                 </Step>
+
+                <Bar isActive={step === 2} />
+
                 <Step>
-                    {/* <StepContainer> */}
-                        <Number>3</Number>
-                        <Text>Obtén tu propuesta</Text>
-                        {/* {width > breakpoints.sm ? (
-                            <Text>Obtén tu propuesta</Text>
-                        ) : (
-                            <Text>Propuesta</Text>
-                        )} */}
-                    {/* </StepContainer> */}
+                    <Number isActive={step === 3} isCompleted={step > 3}>
+                        3
+                    </Number>
+                    {width > breakpoints.md && (
+                        <Text isActive={step === 3} isCompleted={step > 3}>
+                            Obtén tu propuesta
+                        </Text>
+                    )}
                 </Step>
             </Container>
         </ProgressStyled>
