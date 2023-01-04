@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 import { white, slate } from "@shared/styles/colors";
-import { shadows } from "@shared/styles/shadows";
-import { breakpoints, media } from "@shared/styles/sizes";
+import { breakpoints, media, section } from "@shared/styles/sizes";
 
 export const FooterStyled = styled.footer`
     display: flex;
@@ -11,38 +10,17 @@ export const FooterStyled = styled.footer`
     top: 0;
     left: 0;
     width: 100%;
-    background-color: ${white};
+    ${section}
     border-top: 1px solid ${slate[100]};
-    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 `;
 
 export const Container = styled.div`
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    gap: 56px;
     width: 100%;
+    padding: 16px 0;
     max-width: ${breakpoints.xl}px;
-    height: 72px;
-    padding: 0 16px;
-
-    ${media(breakpoints.sm)} {
-        height: 80px;
-        padding: 0 24px;
-    }
-
-    ${media(breakpoints.md)} {
-        height: 88px;
-        padding: 0 32px;
-    }
-
-    ${media(breakpoints.lg)} {
-        height: 96px;
-    }
-
-    ${media(breakpoints.xl)} {
-        height: 104px;
-    }
 `;
 
 export const Button = styled.button`

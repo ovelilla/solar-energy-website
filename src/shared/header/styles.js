@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 import { white, transparent } from "@shared/styles/colors";
 import { shadows } from "@shared/styles/shadows";
-import { breakpoints, media } from "@shared/styles/sizes";
+import { breakpoints, media, header, section } from "@shared/styles/sizes";
 
 export const HeaderStyled = styled.header`
     display: flex;
@@ -35,30 +35,13 @@ export const Container = styled.div`
     gap: 56px;
     width: 100%;
     max-width: ${breakpoints.xl}px;
-    height: 72px;
-    padding: 0 16px;
 
-    ${media(breakpoints.sm)} {
-        height: 80px;
-        padding: 0 24px;
-    }
-
-    ${media(breakpoints.md)} {
-        height: 88px;
-        padding: 0 32px;
-    }
-
-    ${media(breakpoints.lg)} {
-        height: 96px;
-    }
-
-    ${media(breakpoints.xl)} {
-        height: 104px;
-    }
+    ${header}
+    ${section}
 `;
 
 export const Logo = styled.img`
-    width: 152px;
+    width: 132px;
 
     ${media(breakpoints.sm)} {
         width: 160px;

@@ -1,29 +1,32 @@
 import styled from "@emotion/styled";
 import { white, slate } from "@shared/styles/colors";
 import { shadows } from "@shared/styles/shadows";
-import { breakpoints, media } from "@shared/styles/sizes";
+import { breakpoints, media, header, section } from "@shared/styles/sizes";
 
 export const MapStyled = styled.section`
     display: flex;
     justify-content: center;
     flex-grow: 1;
+    ${section}
+
+    ${media(breakpoints.sm)} {
+        background-color: #fafaff;
+    }
 `;
 
 export const Container = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    position: relative;
     width: 100%;
     max-width: ${breakpoints.xl}px;
-    padding: 0;
 
     ${media(breakpoints.sm)} {
-        padding: 24px;
+        padding: 24px 0;
     }
 
     ${media(breakpoints.xl)} {
-        padding: 48px 24px;
+        padding: 48px 0;
     }
 `;
 
@@ -33,7 +36,7 @@ export const Grid = styled.div`
     grid-template-rows: auto 1fr;
     gap: 16px;
     flex-grow: 1;
-    padding: 16px;
+    padding: 24px 0;
     background-color: ${white};
 
     ${media(breakpoints.sm)} {
@@ -57,7 +60,7 @@ export const Grid = styled.div`
 export const Column = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 8px;
     position: relative;
 
     ${media(breakpoints.sm)} {
@@ -72,7 +75,8 @@ export const Column = styled.div`
     }
 
     p:first-of-type {
-        color: ${slate[500]};
+        color: ${slate[600]};
+        font-weight: 300;
     }
 
     p:last-of-type {
@@ -80,12 +84,12 @@ export const Column = styled.div`
         flex-direction: colukmn;
         align-items: center;
         gap: 8px;
-        font-weight: 600;
+        font-weight: 500;
 
         svg {
             overflow: visible;
-            width: 24px;
-            height: 24px;
+            width: 20px;
+            height: 20px;
             stroke: black;
             stroke-width: 0.4px;
         }
@@ -128,8 +132,8 @@ export const Marker = styled.div`
 
     svg {
         overflow: visible;
-        width: 72px;
-        height: 72px;
+        width: 56px;
+        height: 56px;
         color: #28365e;
         stroke: #ffffff;
         stroke-width: 2px;
