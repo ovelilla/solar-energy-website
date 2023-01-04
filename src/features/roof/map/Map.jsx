@@ -1,10 +1,13 @@
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { MapStyled, Container, Grid, Column, MapContainer, Marker } from "./styles";
 
+import useWindowSize from "@hooks/useWindowSize";
 import useProposal from "@hooks/useProposal";
+import { breakpoints } from "@shared/styles/sizes";
 
 const Map = () => {
     const mapRef = useRef();
+    const { width } = useWindowSize();
     const { proposal, setProposal } = useProposal();
 
     useEffect(() => {
@@ -74,10 +77,16 @@ const Map = () => {
                     <Column>
                         <h1>Ubica tu tejado</h1>
 
-                        <p>
-                            Para poder calcular el precio de tu instalación, necesitamos que nos
-                            indiques dónde está tu tejado.
-                        </p>
+                        {width > breakpoints.sm ? (
+                            <p>
+                                Para poder calcular el precio de tu instalación, necesitamos que nos
+                                indiques dónde está tu tejado.
+                            </p>
+                        ) : (
+                            <p>
+                                Desplaza el mapa para ubicar tu tejado y ofrecerte el mejor precio.
+                            </p>
+                        )}
 
                         {proposal.address && (
                             <>
