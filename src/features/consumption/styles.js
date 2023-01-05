@@ -104,6 +104,7 @@ export const Box = styled.div`
         span:last-of-type {
             font-weight: 300;
             color: ${slate[600]};
+        }
     }
 `;
 

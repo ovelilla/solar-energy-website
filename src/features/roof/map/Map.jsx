@@ -56,7 +56,13 @@ const Map = () => {
                         const placeId = results[0].place_id;
                         const address = results[0].formatted_address;
 
-                        setProposal({ placeId, address, latitude, longitude });
+                        setProposal({
+                            ...proposal,
+                            placeId,
+                            address,
+                            latitude,
+                            longitude,
+                        });
                     } else {
                         console.log("No results found");
                     }
