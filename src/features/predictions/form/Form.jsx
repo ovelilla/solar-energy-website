@@ -32,7 +32,7 @@ const Form = ({
             setIsLoading(false);
 
             if (proposal.placeId) {
-                navigate("/roof");
+                navigate("/tejado");
             }
         }, 1000);
     };

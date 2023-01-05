@@ -6,6 +6,7 @@ import Layout from "@shared/layouts/Layout";
 
 import Home from "@pages/Home";
 import Roof from "@pages/Roof";
+import Consumption from "@pages/Consumption";
 
 function App() {
     return (
@@ -15,7 +16,8 @@ function App() {
                     <Route path="/" element={<Layout />}>
                         <Route index element={<Home />} />
                     </Route>
-                    <Route path="roof" element={<Roof />} />
+                    <Route path="tejado" element={<Roof />} />
+                    <Route path="consumo" element={<Consumption />} />
                 </Routes>
             </ProposalProvider>
         </BrowserRouter>

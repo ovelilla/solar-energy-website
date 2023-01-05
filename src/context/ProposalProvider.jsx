@@ -5,15 +5,17 @@ import usePredictions from "@hooks/usePredictions";
 const ProposalContext = createContext();
 
 export const ProposalProvider = ({ children }) => {
-    const { predictions, setPredictions, fetchPredictions } = usePredictions();
-
+    const [isLoading, setIsLoading] = useState(true);
     const [proposal, setProposal] = useState({
         placeId: "",
         address: "",
         latitude: "",
         longitude: "",
+        consumption: 140,
     });
     const [step, setStep] = useState(1);
+
+    const { predictions, setPredictions, fetchPredictions } = usePredictions();
 
     const resetProposal = () => {
         setProposal({
@@ -21,20 +23,23 @@ export const ProposalProvider = ({ children }) => {
             address: "",
             latitude: "",
             longitude: "",
+            consumption: 140,
         });
     };
 
     return (
         <ProposalContext.Provider
             value={{
-                predictions,
-                setPredictions,
-                fetchPredictions,
+                isLoading,
+                setIsLoading,
                 proposal,
                 setProposal,
                 resetProposal,
                 step,
                 setStep,
+                predictions,
+                setPredictions,
+                fetchPredictions,
             }}
         >
             {children}

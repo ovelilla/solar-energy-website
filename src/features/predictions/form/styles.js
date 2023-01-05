@@ -69,6 +69,7 @@ export const Input = styled.input`
     border: none;
     outline: none;
     font-size: 18px;
+    font-weight: 300;
     color: ${slate[700]};
     letter-spacing: -0.8px;
 

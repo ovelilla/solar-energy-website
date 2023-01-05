@@ -11,7 +11,8 @@ const Progress = () => {
     const { width } = useWindowSize();
 
     useEffect(() => {
-        setStep(1);
+        console.log("Progress.jsx: useEffect()");
+        setStep(2);
     }, []);
 
     return (

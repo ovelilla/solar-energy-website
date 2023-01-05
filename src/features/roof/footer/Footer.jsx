@@ -1,10 +1,14 @@
+import { useNavigate } from "react-router-dom";
+
 import { FooterStyled, Container, Button } from "./styles";
 
 const Footer = () => {
+    const navigate = useNavigate();
+    
     return (
         <FooterStyled>
             <Container>
-                <Button>
+                <Button type="button" onClick={() => navigate("/consumo")}>
                     <span>Continuar</span>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"

@@ -4,7 +4,7 @@ import styled from "@emotion/styled";
 
 import Loading from "@features/roof/loading";
 import Header from "@features/roof/header";
-import Map from "@features/roof/map";
+import { default as RoofComponent } from "@features/roof";
 import Footer from "@features/roof/footer";
 
 import useProposal from "@hooks/useProposal";
@@ -13,18 +13,15 @@ export const Main = styled.main`
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    
 `;
 
 const Roof = () => {
-    const { proposal } = useProposal();
-
-    const [isLoading, setIsLoading] = useState(true);
+    const { isLoading, setIsLoading, proposal, step } = useProposal();
 
     useEffect(() => {
         setTimeout(() => {
             setIsLoading(false);
-        }, 2000);
+        }, 3000);
     }, []);
 
     if (proposal.placeId && !isLoading) {
@@ -32,7 +29,7 @@ const Roof = () => {
             <>
                 <Header />
                 <Main>
-                    <Map />
+                    <RoofComponent />
                 </Main>
                 <Footer />
             </>
