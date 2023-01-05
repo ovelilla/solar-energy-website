@@ -53,7 +53,7 @@ export const Grid = styled.div`
         grid-template-rows: 1fr;
     }
 
-    ${media(breakpoints.xl)} {
+    ${media(breakpoints.lg)} {
         gap: 36px;
         padding: 36px;
     }

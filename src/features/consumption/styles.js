@@ -53,6 +53,11 @@ export const Grid = styled.div`
         grid-template-rows: 1fr;
     }
 
+    ${media(breakpoints.lg)} {
+        gap: 36px;
+        padding: 36px;
+    }
+
     ${media(breakpoints.xl)} {
         gap: 36px;
         padding: 36px;
@@ -94,6 +99,11 @@ export const Box = styled.div`
 
     ${media(breakpoints.md)} {
         flex-grow: 1;
+        padding: 24px;
+    }
+
+    ${media(breakpoints.xl)} {
+        padding: 36px;
     }
 
     div {
@@ -101,8 +111,12 @@ export const Box = styled.div`
         flex-direction: column;
 
         span:first-of-type {
-            font-size: 16px;
+            
             font-weight: 600;
+
+            ${media(breakpoints.md)} {
+                font-size: 18px;
+            }
         }
 
         span:last-of-type {
@@ -134,12 +148,21 @@ export const InputNumber = styled.input`
     &:hover:not(:focus) {
         box-shadow: 0px 0px 0px 1px #28365e;
     }
+
+    ${media(breakpoints.md)} {
+        margin-top: 24px;
+    }
+
+    ${media(breakpoints.xl)} {
+        margin-top: 36px;
+    }
 `;
 
 export const Range = styled.div`
     display: flex;
     flex-direction: column;
     gap: 8px;
+    
 `;
 
 export const InputRange = styled.input`
