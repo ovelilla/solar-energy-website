@@ -49,7 +49,7 @@ export const Grid = styled.div`
     }
 
     ${media(breakpoints.md)} {
-        grid-template-columns: 35fr 65fr;
+        grid-template-columns: 60fr 40fr;
         grid-template-rows: 1fr;
     }
 
@@ -91,6 +91,10 @@ export const Box = styled.div`
     padding: 16px;
     background-color: #f5f6ff;
     border-radius: 8px;
+
+    ${media(breakpoints.md)} {
+        flex-grow: 1;
+    }
 
     div {
         display: flex;

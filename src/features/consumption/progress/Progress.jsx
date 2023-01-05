@@ -33,7 +33,7 @@ const Progress = () => {
                         1
                     )}
                 </Number>
-                {width > breakpoints.md && (
+                {width >= breakpoints.md && (
                     <Text isActive={step === 1} isCompleted={step > 1}>
                         Ubica tu tejado
                     </Text>
@@ -58,7 +58,7 @@ const Progress = () => {
                         2
                     )}
                 </Number>
-                {width > breakpoints.md && (
+                {width >= breakpoints.md && (
                     <Text isActive={step === 2} isCompleted={step > 2}>
                         Define tu consumo
                     </Text>
@@ -83,7 +83,7 @@ const Progress = () => {
                         3
                     )}
                 </Number>
-                {width > breakpoints.md && (
+                {width >= breakpoints.md && (
                     <Text isActive={step === 3} isCompleted={step > 3}>
                         Obtén tu propuesta
                     </Text>
