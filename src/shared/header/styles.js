@@ -12,6 +12,7 @@ export const HeaderStyled = styled.header`
     top: 0;
     left: 0;
     width: 100%;
+    ${section}
     background-color: ${(p) => {
         if (p.isScroll || (p.sidebar.isOpen && !p.sidebar.isClosing)) {
             return white;
@@ -37,7 +38,7 @@ export const Container = styled.div`
     max-width: ${breakpoints.xl}px;
 
     ${header}
-    ${section}
+    
 `;
 
 export const Logo = styled.img`

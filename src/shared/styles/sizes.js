@@ -16,7 +16,7 @@ export const header = `
     }
 
     ${media(breakpoints.md)} {
-        height: 88px;
+        height: 80px;
     }
 
     ${media(breakpoints.lg)} {

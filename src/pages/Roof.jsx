@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import styled from "@emotion/styled";
 
@@ -16,15 +16,15 @@ export const Main = styled.main`
 `;
 
 const Roof = () => {
-    const { isLoading, setIsLoading, proposal, step } = useProposal();
+    const { isRoofLoading, setIsRoofLoading, proposal } = useProposal();
 
     useEffect(() => {
         setTimeout(() => {
-            setIsLoading(false);
+            setIsRoofLoading(false);
         }, 3000);
     }, []);
 
-    if (proposal.placeId && !isLoading) {
+    if (proposal.placeId && !isRoofLoading) {
         return (
             <>
                 <Header />
@@ -34,7 +34,7 @@ const Roof = () => {
                 <Footer />
             </>
         );
-    } else if (proposal.placeId && isLoading) {
+    } else if (proposal.placeId && isRoofLoading) {
         return (
             <>
                 <Header />

@@ -7,6 +7,7 @@ import Layout from "@shared/layouts/Layout";
 import Home from "@pages/Home";
 import Roof from "@pages/Roof";
 import Consumption from "@pages/Consumption";
+import Proposal from "@pages/Proposal";
 
 function App() {
     return (
@@ -18,6 +19,7 @@ function App() {
                     </Route>
                     <Route path="tejado" element={<Roof />} />
                     <Route path="consumo" element={<Consumption />} />
+                    <Route path="propuesta" element={<Proposal />} />
                 </Routes>
             </ProposalProvider>
         </BrowserRouter>

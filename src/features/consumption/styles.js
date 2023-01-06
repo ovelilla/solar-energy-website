@@ -57,11 +57,6 @@ export const Grid = styled.div`
         gap: 36px;
         padding: 36px;
     }
-
-    ${media(breakpoints.xl)} {
-        gap: 36px;
-        padding: 36px;
-    }
 `;
 
 export const RightColumn = styled.div`
@@ -111,7 +106,6 @@ export const Box = styled.div`
         flex-direction: column;
 
         span:first-of-type {
-            
             font-weight: 600;
 
             ${media(breakpoints.md)} {
@@ -162,7 +156,6 @@ export const Range = styled.div`
     display: flex;
     flex-direction: column;
     gap: 8px;
-    
 `;
 
 export const InputRange = styled.input`

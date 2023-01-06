@@ -2,8 +2,6 @@ import { useNavigate } from "react-router-dom";
 
 import { FooterStyled, Container, NextButton, PrevButton } from "./styles";
 
-import useWindowSize from "@hooks/useWindowSize";
-
 const Footer = () => {
     const navigate = useNavigate();
 
@@ -25,7 +23,7 @@ const Footer = () => {
                     </svg>
                     <span>Volver</span>
                 </PrevButton>
-                <NextButton>
+                <NextButton type="button" onClick={() => navigate("/propuesta")}>
                     <span>Continuar</span>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"

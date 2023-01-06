@@ -43,8 +43,8 @@
 	<g class="st0">
 		
 			<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="-595.8562" y1="-125.4424" x2="-595.1462" y2="-125.4424" gradientTransform="matrix(-208.61 0 0 -208.61 -124149.1875 -26141.0508)">
-			<stop  offset="0" style="stop-color:#13192e"/>
-			<stop  offset="1" style="stop-color:#13192e"/>
+			<stop  offset="0" style="stop-color:#28365e"/>
+			<stop  offset="1" style="stop-color:#1e2946"/>
 		</linearGradient>
 		<rect x="3.6" y="5.9" class="st1" width="149.8" height="43.2"/>
 	</g>

@@ -5,7 +5,8 @@ import usePredictions from "@hooks/usePredictions";
 const ProposalContext = createContext();
 
 export const ProposalProvider = ({ children }) => {
-    const [isLoading, setIsLoading] = useState(true);
+    const [isRoofLoading, setIsRoofLoading] = useState(true);
+    const [isProposalLoading, setIsProposalLoading] = useState(true);
     const [proposal, setProposal] = useState({
         placeId: "",
         address: "",
@@ -30,8 +31,10 @@ export const ProposalProvider = ({ children }) => {
     return (
         <ProposalContext.Provider
             value={{
-                isLoading,
-                setIsLoading,
+                isRoofLoading,
+                setIsRoofLoading,
+                isProposalLoading,
+                setIsProposalLoading,
                 proposal,
                 setProposal,
                 resetProposal,

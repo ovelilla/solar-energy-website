@@ -81,7 +81,6 @@ export const PrevButton = styled.button`
     display: flex;
     align-items: center;
     justify-content: center;
-    /* flex-grow: 1; */
     gap: 8px;
     position: relative;
     height: 48px;
