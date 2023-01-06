@@ -20,10 +20,10 @@ const Roof = () => {
     useEffect(() => {
         setTimeout(() => {
             setIsProposalLoading(false);
-        }, 3000);
+        }, 4000);
     }, []);
 
-    // if (proposal.placeId && !isProposalLoading) {
+    if (proposal.placeId && !isProposalLoading) {
         return (
             <>
                 <Header />
@@ -32,16 +32,16 @@ const Roof = () => {
                 </Main>
             </>
         );
-    // } else if (proposal.placeId && isProposalLoading) {
-    //     return (
-    //         <>
-    //             <Header />
-    //             <Loading />;
-    //         </>
-    //     );
-    // } else {
-    //     return <Navigate to="/" />;
-    // }
+    } else if (proposal.placeId && isProposalLoading) {
+        return (
+            <>
+                <Header />
+                <Loading />;
+            </>
+        );
+    } else {
+        return <Navigate to="/" />;
+    }
 };
 
 export default Roof;

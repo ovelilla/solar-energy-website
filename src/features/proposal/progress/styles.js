@@ -5,27 +5,24 @@ import { breakpoints, media, section } from "@shared/styles/sizes";
 
 export const ProgressStyled = styled.div`
     display: flex;
-    flex-direction: column;
-    gap: 16px;
+    justify-content: center;
     ${section}
-
-    h2 {
-        font-size: 16px;
-        font-weight: 600;
-        text-transform: uppercase;
-
-        ${media(breakpoints.sm)} {
-            font-size: 18px;
-        }
-    }
 `;
 
 export const Container = styled.div`
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+    width: 100%;
+    max-width: ${breakpoints.xl}px;
+`;
 
-    ${media(breakpoints.md)} {
-    }
+export const Steps = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: ${breakpoints.xl}px;
 
     ${media(breakpoints.lg)} {
         flex-direction: row;

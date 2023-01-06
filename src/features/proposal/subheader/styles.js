@@ -73,7 +73,6 @@ export const Line = styled.div`
     ${media(breakpoints.md)} {
         height: 48px;
     }
-
 `;
 
 export const Action = styled.div``;
