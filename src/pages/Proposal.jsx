@@ -1,20 +1,11 @@
 import { useEffect } from "react";
-import { Navigate } from "react-router-dom";
-import styled from "@emotion/styled";
 
-import Loading from "@features/proposal/loading";
-import Header from "@features/proposal/header";
+import { Loading, Header } from "@features/proposal/components";
 import { default as ProposalComponent } from "@features/proposal";
 
 import useProposal from "@hooks/useProposal";
 
-export const Main = styled.main`
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-`;
-
-const Roof = () => {
+const Proposal = () => {
     const { isProposalLoading, setIsProposalLoading, proposal } = useProposal();
 
     useEffect(() => {
@@ -23,25 +14,21 @@ const Roof = () => {
         }, 4000);
     }, []);
 
-    if (proposal.placeId && !isProposalLoading) {
-        return (
-            <>
-                <Header />
-                <Main>
-                    <ProposalComponent />
-                </Main>
-            </>
-        );
-    } else if (proposal.placeId && isProposalLoading) {
+    if (proposal.placeId && isProposalLoading) {
         return (
             <>
                 <Header />
                 <Loading />;
             </>
         );
-    } else {
-        return <Navigate to="/" />;
     }
+
+    return (
+        <>
+            <Header />
+            <ProposalComponent />
+        </>
+    );
 };
 
-export default Roof;
+export default Proposal;

@@ -14,6 +14,7 @@ export default defineConfig({
             "@hooks": path.resolve(root, "src/hooks"),
             "@layouts": path.resolve(root, "src/layouts"),
             "@pages": path.resolve(root, "src/pages"),
+            "@routes": path.resolve(root, "src/routes"),
             "@shared": path.resolve(root, "src/shared"),
             "@variables": path.resolve(root, "src/variables"),
         },

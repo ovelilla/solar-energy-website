@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
 
 import useDebounce from "@hooks/useDebounce";
 import useProposal from "@hooks/useProposal";
@@ -31,8 +32,11 @@ const Form = ({
         setTimeout(() => {
             setIsLoading(false);
 
+            const id = uuidv4();
+            setProposal({ ...proposal, id });
+
             if (proposal.placeId) {
-                navigate("/tejado");
+                navigate("/tejado/" + id);
             }
         }, 1000);
     };

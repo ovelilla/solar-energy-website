@@ -8,6 +8,7 @@ export const ProposalProvider = ({ children }) => {
     const [isRoofLoading, setIsRoofLoading] = useState(true);
     const [isProposalLoading, setIsProposalLoading] = useState(true);
     const [proposal, setProposal] = useState({
+        id: "",
         placeId: "",
         address: "",
         latitude: "",
@@ -20,6 +21,7 @@ export const ProposalProvider = ({ children }) => {
 
     const resetProposal = () => {
         setProposal({
+            id: "",
             placeId: "",
             address: "",
             latitude: "",

@@ -28,6 +28,26 @@ export const header = `
     }
 `;
 
+export const topHeader = `
+    top: 64px;
+
+    ${media(breakpoints.sm)} {
+        top: 72px;
+    }
+
+    ${media(breakpoints.md)} {
+        top: 80px;
+    }
+
+    ${media(breakpoints.lg)} {
+        top: 88px;
+    }
+
+    ${media(breakpoints.xl)} {
+        top: 96px;
+    }
+`;
+
 export const logo = `
     width: 132px;
 

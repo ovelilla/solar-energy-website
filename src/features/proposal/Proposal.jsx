@@ -1,11 +1,16 @@
-import { ProposalStyled } from "./styles";
+import { ProposalStyled, Section, Container, Grid, Column } from "./styles";
 
 import useProposal from "@hooks/useProposal";
 
-import Subheader from "@features/proposal/subheader";
-import Title from "@features/proposal/title";
-import Progress from "@features/proposal/progress";
-import Number from "@features/proposal/number";
+import {
+    Consumption,
+    Subheader,
+    Title,
+    Progress,
+    Panels,
+    Payment,
+    Summary,
+} from "@features/proposal/components";
 
 const Proposal = () => {
     const { proposal } = useProposal();
@@ -15,19 +20,31 @@ const Proposal = () => {
             <Subheader />
             <Title />
             <Progress />
-            <Number />
+            <Section>
+                <Container>
+                    <Grid>
+                        <Column>
+                            <Panels />
+                            <Payment />
+                            <Consumption />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                        </Column>
+                        <Column>
+                            <Summary />
+                        </Column>
+                    </Grid>
+                </Container>
+            </Section>
 
-
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
             <br />
             <br />
             <br />
