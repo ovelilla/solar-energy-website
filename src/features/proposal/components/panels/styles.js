@@ -150,12 +150,12 @@ export const Type = styled.div`
 
 export const TypeButton = styled.button`
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     flex-grow: 1;
+    gap: 24px;
     position: relative;
-    padding: 24px 48px;
+    padding: 24px;
     background-color: ${white};
     border: 4px solid #ffffff;
     border-radius: 8px;
@@ -163,8 +163,17 @@ export const TypeButton = styled.button`
     border: ${(p) => p.active && `4px solid #28365e`};
 
     ${media(breakpoints.md)} {
-        gap: 4px;
-        padding: 32px 64px;
+        padding: 32px;
+    }
+
+    div:first-of-type {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        ${media(breakpoints.md)} {
+            gap: 4px;
+        }
     }
 
     span:first-of-type {
@@ -182,17 +191,14 @@ export const TypeButtonIcon = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    width: 40px;
-    height: 40px;
-    background-color: #e0e7fb;
+    width: 48px;
+    height: 48px;
+    background-color: ${(p) => (p.active ? "#e0e7fb;" : "rgb(250, 250, 255)")};
     border-radius: 50%;
     color: "#28365e";
 
     svg {
-        width: 24px;
-        height: 24px;
+        width: 32px;
+        height: 32px;
     }
 `;

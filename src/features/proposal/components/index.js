@@ -2,6 +2,7 @@ import Consumption from "./consumption";
 import Faq from "./faq";
 import Footer from "./footer";
 import Header from "./header";
+import Helps from "./helps";
 import Loading from "./loading";
 import Panels from "./panels";
 import Payment from "./payment";
@@ -15,6 +16,7 @@ export {
     Faq,
     Footer,
     Header,
+    Helps,
     Loading,
     Payment,
     Panels,

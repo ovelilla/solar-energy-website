@@ -57,10 +57,13 @@ const Panels = () => {
 
                 <Type>
                     <TypeButton onClick={() => setType("standard")} active={type === "standard"}>
-                        <span>Paneles estándar</span>
-                        <span>Producción 410 W</span>
-                        {type === "standard" && (
-                            <TypeButtonIcon>
+                        <div>
+                            <span>Paneles estándar</span>
+                            <span>Producción 410 W</span>
+                        </div>
+
+                        <TypeButtonIcon active={type === "standard"}>
+                            {type === "standard" && (
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="16"
@@ -70,14 +73,17 @@ const Panels = () => {
                                 >
                                     <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
                                 </svg>
-                            </TypeButtonIcon>
-                        )}
+                            )}
+                        </TypeButtonIcon>
                     </TypeButton>
                     <TypeButton onClick={() => setType("premium")} active={type === "premium"}>
-                        <span>Paneles premium</span>
-                        <span>Producción 460 W</span>
-                        {type === "premium" && (
-                            <TypeButtonIcon>
+                        <div>
+                            <span>Paneles premium</span>
+                            <span>Producción 460 W</span>
+                        </div>
+
+                        <TypeButtonIcon active={type === "premium"}>
+                            {type === "premium" && (
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="16"
@@ -87,8 +93,8 @@ const Panels = () => {
                                 >
                                     <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
                                 </svg>
-                            </TypeButtonIcon>
-                        )}
+                            )}
+                        </TypeButtonIcon>
                     </TypeButton>
                 </Type>
             </Container>

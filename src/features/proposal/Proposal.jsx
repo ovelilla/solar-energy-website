@@ -6,6 +6,7 @@ import {
     Consumption,
     Faq,
     Footer,
+    Helps,
     Panels,
     Payment,
     Progress,
@@ -29,6 +30,7 @@ const Proposal = () => {
                             <Panels />
                             <Payment />
                             <Consumption />
+                            <Helps />
                         </Column>
                         <Column>
                             <Summary />
