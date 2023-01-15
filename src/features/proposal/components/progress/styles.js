@@ -16,6 +16,23 @@ export const Container = styled.div`
     gap: 16px;
     width: 100%;
     max-width: ${breakpoints.xl}px;
+
+    h2 {
+        font-size: 20px;
+        font-weight: 600;
+        letter-spacing: -0.4px;
+        line-height: 1.2;
+
+        ${media(breakpoints.md)} {
+            font-size: 24px;
+            letter-spacing: -0.8px;
+        }
+
+        ${media(breakpoints.xl)} {
+            font-size: 28px;
+            letter-spacing: -1.2px;
+        }
+    }
 `;
 
 export const Steps = styled.div`

@@ -3,6 +3,7 @@ import {
     ConsumptionStyled,
     Container,
     Text,
+    Inputs,
     InputNumber,
     Range,
     InputRange,
@@ -27,29 +28,31 @@ const Consumption = () => {
                     </p>
                 </Text>
 
-                <InputNumber
-                    type="number"
-                    min={30}
-                    max={240}
-                    step={10}
-                    value={consumption}
-                    onChange={handleChange}
-                />
-
-                <Range>
-                    <InputRange
-                        type="range"
+                <Inputs>
+                    <InputNumber
+                        type="number"
                         min={30}
                         max={240}
                         step={10}
                         value={consumption}
                         onChange={handleChange}
                     />
-                    <AxisTitle>
-                        <span>30 €</span>
-                        <span>240 €</span>
-                    </AxisTitle>
-                </Range>
+
+                    <Range>
+                        <InputRange
+                            type="range"
+                            min={30}
+                            max={240}
+                            step={10}
+                            value={consumption}
+                            onChange={handleChange}
+                        />
+                        <AxisTitle>
+                            <span>30 €</span>
+                            <span>240 €</span>
+                        </AxisTitle>
+                    </Range>
+                </Inputs>
             </Container>
         </ConsumptionStyled>
     );

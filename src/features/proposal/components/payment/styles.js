@@ -13,8 +13,9 @@ export const Grid = styled.div`
     display: grid;
     grid-template-columns: 1fr;
     gap: 32px;
+    width: 100%;
 
-    ${media(breakpoints.md)} {
+    ${media(breakpoints.xl)} {
         grid-template-columns: 46fr 54fr;
         gap: 48px;
     }
@@ -90,6 +91,7 @@ export const Pointer = styled.div`
 export const Options = styled.div`
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
     position: relative;
 `;
 
@@ -126,9 +128,17 @@ export const Summary = styled.div`
     display: flex;
     flex-direction: column;
     gap: 40px;
-    padding: 40px;
+    padding: 24px;
     background-color: rgb(250, 250, 255);
     border-radius: 16px;
+
+    ${media(breakpoints.md)} {
+        padding: 32px;
+    }
+
+    ${media(breakpoints.xl)} {
+        padding: 40px;
+    }
 `;
 
 export const Header = styled.div`

@@ -29,7 +29,7 @@ export const Grid = styled.div`
     gap: 16px;
     flex-grow: 1;
 
-    ${media(breakpoints.md)} {
+    ${media(breakpoints.lg)} {
         grid-template-columns: 70fr 30fr;
         gap: 64px;
     }
@@ -38,6 +38,10 @@ export const Grid = styled.div`
 export const Column = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 96px;
+    gap: 48px;
     position: relative;
+
+    ${media(breakpoints.md)} {
+        gap: 96px;
+    }
 `;

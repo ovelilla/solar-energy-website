@@ -15,10 +15,29 @@ export const Container = styled.div`
     gap: 32px;
     width: 100%;
     max-width: ${breakpoints.xl}px;
-    margin-top: 48px;
     padding: 24px;
     background-color: rgb(250, 250, 255);
     border-radius: 16px;
+
+    ${media(breakpoints.md)} {
+        gap: 48px;
+        padding: 32px;
+    }
+
+    ${media(breakpoints.lg)} {
+        margin-top: 48px;
+    }
+
+    ${media(breakpoints.xl)} {
+        gap: 64px;
+        padding: 40px;
+    }
+`;
+
+export const Text = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 
     h2 {
         font-size: 20px;
@@ -42,10 +61,18 @@ export const Container = styled.div`
     }
 `;
 
-export const Text = styled.div`
+export const Inputs = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 24px;
+
+    ${media(breakpoints.md)} {
+        gap: 32px;
+    }
+
+    ${media(breakpoints.xl)} {
+        gap: 40px;
+    }
 `;
 
 export const InputNumber = styled.input`
@@ -63,14 +90,6 @@ export const InputNumber = styled.input`
 
     &:hover:not(:focus) {
         box-shadow: 0px 0px 0px 1px #28365e;
-    }
-
-    ${media(breakpoints.md)} {
-        margin-top: 24px;
-    }
-
-    ${media(breakpoints.xl)} {
-        margin-top: 36px;
     }
 `;
 
@@ -115,4 +134,65 @@ export const AxisTitle = styled.div`
     justify-content: space-between;
     color: ${slate[500]};
     font-weight: 300;
+`;
+
+export const Type = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 24px;
+
+    ${media(breakpoints.xl)} {
+        gap: 48px;
+    }
+`;
+
+export const TypeButton = styled.button`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    position: relative;
+    padding: 24px 48px;
+    background-color: ${white};
+    border: 4px solid #ffffff;
+    border-radius: 8px;
+    box-shadow: ${shadows.md};
+    border: ${(p) => p.active && `4px solid #28365e`};
+
+    ${media(breakpoints.md)} {
+        gap: 4px;
+        padding: 32px 64px;
+    }
+
+    span:first-of-type {
+        font-size: 18px;
+        font-weight: 600;
+        color: ${(p) => (p.active ? "#28365e" : gray[600])};
+    }
+
+    span:last-of-type {
+        color: ${(p) => (p.active ? gray[500] : gray[400])};
+    }
+`;
+
+export const TypeButtonIcon = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 40px;
+    height: 40px;
+    background-color: #e0e7fb;
+    border-radius: 50%;
+    color: "#28365e";
+
+    svg {
+        width: 24px;
+        height: 24px;
+    }
 `;

@@ -4,12 +4,14 @@ import useProposal from "@hooks/useProposal";
 
 import {
     Consumption,
-    Subheader,
-    Title,
-    Progress,
+    Faq,
+    Footer,
     Panels,
     Payment,
+    Progress,
+    Subheader,
     Summary,
+    Title,
 } from "@features/proposal/components";
 
 const Proposal = () => {
@@ -27,16 +29,6 @@ const Proposal = () => {
                             <Panels />
                             <Payment />
                             <Consumption />
-                            <br />
-                            <br />
-                            <br />
-                            <br />
-                            <br />
-                            <br />
-                            <br />
-                            <br />
-                            <br />
-                            <br />
                         </Column>
                         <Column>
                             <Summary />
@@ -44,57 +36,10 @@ const Proposal = () => {
                     </Grid>
                 </Container>
             </Section>
-
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
+            <div>
+                <Faq />
+                <Footer />
+            </div>
         </ProposalStyled>
     );
 };

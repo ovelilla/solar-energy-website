@@ -19,6 +19,22 @@ export const Container = styled.div`
     background-color: rgb(250, 250, 255);
     border-radius: 16px;
 
+    ${media(breakpoints.md)} {
+        gap: 48px;
+        padding: 32px;
+    }
+
+    ${media(breakpoints.xl)} {
+        gap: 64px;
+        padding: 40px;
+    }
+`;
+
+export const Text = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
     h2 {
         font-size: 20px;
         font-weight: 600;
@@ -41,10 +57,18 @@ export const Container = styled.div`
     }
 `;
 
-export const Text = styled.div`
+export const Inputs = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 24px;
+
+    ${media(breakpoints.md)} {
+        gap: 32px;
+    }
+
+    ${media(breakpoints.xl)} {
+        gap: 40px;
+    }
 `;
 
 export const InputNumber = styled.input`
@@ -62,14 +86,6 @@ export const InputNumber = styled.input`
 
     &:hover:not(:focus) {
         box-shadow: 0px 0px 0px 1px #28365e;
-    }
-
-    ${media(breakpoints.md)} {
-        margin-top: 24px;
-    }
-
-    ${media(breakpoints.xl)} {
-        margin-top: 36px;
     }
 `;
 

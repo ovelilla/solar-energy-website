@@ -83,3 +83,44 @@ export const section = `
         padding: 0 80px;
     }
 `;
+
+export const container = `
+    padding: 48px 0;
+
+    ${media(breakpoints.sm)} {
+        padding: 64px 0;
+    }
+
+    ${media(breakpoints.md)} {
+        padding: 80px 0;
+    }
+
+    ${media(breakpoints.lg)} {
+        padding: 96px 0;
+    }
+
+    ${media(breakpoints.xl)} {
+        padding: 112px 0;
+    }
+`;
+
+export const footer = `
+    padding: 48px 0;
+
+    ${media(breakpoints.sm)} {
+        padding: 56px 0;
+    }
+
+    ${media(breakpoints.md)} {
+        padding: 64px 0;
+    }
+
+    ${media(breakpoints.lg)} {
+        padding: 72px 0;
+    }
+
+    ${media(breakpoints.xl)} {
+        padding: 80px 0;
+    }
+`;
+
