@@ -55,6 +55,10 @@ const Summary = () => {
                                 <Label>Potencia instalada</Label>
                                 <Value>4,6 kW</Value>
                             </Row>
+                            <Row>
+                                <Label>Baterías</Label>
+                                <Value>10 kW</Value>
+                            </Row>
                         </Text>
                     </Section>
 
