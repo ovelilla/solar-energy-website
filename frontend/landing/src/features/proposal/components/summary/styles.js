@@ -17,10 +17,8 @@ export const Container = styled.div`
     flex-direction: column;
     gap: 24px;
     margin-top: 48px;
-    padding: 24px;
-    /* box-shadow: ${shadows.md}; */
+    padding: 32px;
     box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
-    /* box-shadow: 0px 2px 4px rgb(1 11 25 20%)*/
     border-radius: 16px;
 `;
 
