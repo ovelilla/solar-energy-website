@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
-import { white, slate, gray } from "@shared/styles/colors";
-import { shadows } from "@shared/styles/shadows";
-import { breakpoints, media, section, topHeader } from "@shared/styles/sizes";
+import { white, slate } from "@shared/styles/colors";
+import { breakpoints, media, topHeader } from "@shared/styles/sizes";
 
 export const SummaryStyled = styled.div`
     display: flex;
