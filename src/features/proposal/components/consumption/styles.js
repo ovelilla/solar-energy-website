@@ -5,19 +5,34 @@ import { breakpoints, media, section } from "@shared/styles/sizes";
 
 export const ConsumptionStyled = styled.div`
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     width: 100%;
+    background-color: rgb(250, 250, 255);
+    border-radius: 16px;
+    scroll-margin-top: 64px;
+
+    ${media(breakpoints.sm)} {
+        scroll-margin-top: 72px;
+    }
+
+    ${media(breakpoints.md)} {
+        scroll-margin-top: 80px;
+    }
+
+    ${media(breakpoints.lg)} {
+        scroll-margin-top: 88px;
+    }
+
+    ${media(breakpoints.xl)} {
+        scroll-margin-top: 96px;
+    }
 `;
 
 export const Container = styled.div`
     display: flex;
     flex-direction: column;
     gap: 32px;
-    width: 100%;
-    max-width: ${breakpoints.xl}px;
     padding: 24px;
-    background-color: rgb(250, 250, 255);
-    border-radius: 16px;
 
     ${media(breakpoints.md)} {
         gap: 48px;
@@ -71,8 +86,15 @@ export const Inputs = styled.div`
     }
 `;
 
+export const NumberContainer = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+`;
+
 export const InputNumber = styled.input`
-    width: 160px;
+    width: 120px;
     height: 48px;
     padding: 0 16px;
     outline: none;
@@ -80,12 +102,29 @@ export const InputNumber = styled.input`
     border-radius: 8px;
     box-shadow: rgb(215 220 245) 0px 0px 0px 1px;
 
+    ${media(breakpoints.sm)} {
+        width: 160px;
+    }
+
     &:focus {
         box-shadow: 0px 0px 0px 2px #28365e;
     }
 
     &:hover:not(:focus) {
         box-shadow: 0px 0px 0px 1px #28365e;
+    }
+`;
+
+export const Number = styled.div`
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    font-size: 32px;
+    font-weight: 700;
+
+    span {
+        font-size: 16px;
+        font-weight: 400;
     }
 `;
 

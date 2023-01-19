@@ -5,31 +5,42 @@ import { breakpoints, media, section } from "@shared/styles/sizes";
 
 export const PanelsStyled = styled.div`
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     width: 100%;
+    background-color: rgb(250, 250, 255);
+    border-radius: 16px;
+    scroll-margin-top: 64px;
+
+    ${media(breakpoints.sm)} {
+        scroll-margin-top: 72px;
+    }
+
+    ${media(breakpoints.md)} {
+        scroll-margin-top: 80px;
+    }
+
+    ${media(breakpoints.lg)} {
+        scroll-margin-top: 88px;
+    }
+
+    ${media(breakpoints.xl)} {
+        scroll-margin-top: 96px;
+    }
 `;
 
 export const Container = styled.div`
     display: flex;
     flex-direction: column;
     gap: 32px;
-    width: 100%;
-    max-width: ${breakpoints.xl}px;
     padding: 24px;
-    background-color: rgb(250, 250, 255);
-    border-radius: 16px;
 
     ${media(breakpoints.md)} {
-        gap: 48px;
+        gap: 40px;
         padding: 32px;
     }
 
-    ${media(breakpoints.lg)} {
-        margin-top: 48px;
-    }
-
     ${media(breakpoints.xl)} {
-        gap: 64px;
+        gap: 48px;
         padding: 40px;
     }
 `;
@@ -65,6 +76,7 @@ export const Inputs = styled.div`
     display: flex;
     flex-direction: column;
     gap: 24px;
+    width: 100%;
 
     ${media(breakpoints.md)} {
         gap: 32px;
@@ -75,8 +87,15 @@ export const Inputs = styled.div`
     }
 `;
 
+export const NumberContainer = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+`;
+
 export const InputNumber = styled.input`
-    width: 160px;
+    width: 120px;
     height: 48px;
     padding: 0 16px;
     outline: none;
@@ -84,12 +103,29 @@ export const InputNumber = styled.input`
     border-radius: 8px;
     box-shadow: rgb(215 220 245) 0px 0px 0px 1px;
 
+    ${media(breakpoints.sm)} {
+        width: 160px;
+    }
+
     &:focus {
         box-shadow: 0px 0px 0px 2px #28365e;
     }
 
     &:hover:not(:focus) {
         box-shadow: 0px 0px 0px 1px #28365e;
+    }
+`;
+
+export const Number = styled.div`
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    font-size: 32px;
+    font-weight: 700;
+
+    span {
+        font-size: 16px;
+        font-weight: 400;
     }
 `;
 
@@ -142,6 +178,7 @@ export const Type = styled.div`
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 24px;
+    width: 100%;
 
     ${media(breakpoints.xl)} {
         gap: 48px;
@@ -153,16 +190,21 @@ export const TypeButton = styled.button`
     align-items: center;
     justify-content: space-between;
     flex-grow: 1;
-    gap: 24px;
+    gap: 16px;
     position: relative;
-    padding: 24px;
+    padding: 16px;
     background-color: ${white};
-    border: 4px solid #ffffff;
+    border: 2px solid ${(p) => (p.active ? "#28365e" : "#ffffff")};
     border-radius: 8px;
     box-shadow: ${shadows.md};
-    border: ${(p) => p.active && `4px solid #28365e`};
+
+    ${media(breakpoints.sm)} {
+        gap: 24px;
+        padding: 24px;
+    }
 
     ${media(breakpoints.md)} {
+        gap: 32px;
         padding: 32px;
     }
 
@@ -177,9 +219,13 @@ export const TypeButton = styled.button`
     }
 
     span:first-of-type {
-        font-size: 18px;
+        font-size: 16px;
         font-weight: 600;
-        color: ${(p) => (p.active ? "#28365e" : gray[600])};
+        color: ${(p) => (p.active ? "#28365e" : gray[500])};
+
+        ${media(breakpoints.sm)} {
+            font-size: 18px;
+        }
     }
 
     span:last-of-type {
@@ -191,6 +237,7 @@ export const TypeButtonIcon = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
     width: 48px;
     height: 48px;
     background-color: ${(p) => (p.active ? "#e0e7fb;" : "rgb(250, 250, 255)")};
@@ -200,5 +247,46 @@ export const TypeButtonIcon = styled.div`
     svg {
         width: 32px;
         height: 32px;
+    }
+`;
+
+export const InfoButton = styled.button`
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    /* padding: 16px; */
+    font-weight: 500;
+    /* background-color: #e0e7fb;
+    background-color: rgb(245, 246, 255); */
+    border-radius: 8px;
+    text-align: left;
+    letter-spacing: -0.4px;
+
+    /* ${media(breakpoints.md)} {
+        padding: 24px 32px;
+    } */
+
+    &:hover span {
+        text-decoration: underline;
+    }
+`;
+
+export const InfoIcon = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: #e0e7fb;
+
+    svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    span {
+        flex-grow: 0;
     }
 `;

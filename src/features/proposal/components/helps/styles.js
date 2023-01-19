@@ -30,11 +30,14 @@ export const Title = styled.h2`
 export const TextContainer = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 8px;
 `;
 
 export const Subtitle = styled.p`
     font-weight: 600;
+    ${media(breakpoints.md)} {
+        font-size: 18px;
+    }
 `;
 
 export const Text = styled.div`
@@ -49,41 +52,46 @@ export const Chart = styled.div`
     flex-direction: column;
     gap: 16px;
     width: 100%;
-    margin-top: 24px;
+    margin-top: 16px;
+
+    ${media(breakpoints.md)} {
+        margin-top: 24px;
+    }
+`;
+
+export const Column = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
 `;
 
 export const Bar = styled.div`
     display: flex;
-    flex-direction: column;
-    gap: 4px;
+    align-items: center;
+    overflow: hidden;
+    min-width: 0;
+    height: 48px;
+    border-radius: 8px;
+    transition: width 3s ease-in-out;
+    font-size: 18px;
+    font-weight: 600;
 
-    div {
-        display: flex;
-        align-items: center;
-        width: 120px;
-        height: 48px;
-        padding: 0 24px;
-        border-radius: 8px;
-        transition: width 3s ease-in-out;
-        font-size: 18px;
-        font-weight: 600;
-    }
+    ${(p) => {
+        if(p.index === 1) {
+            return `
+                width: ${p.isVisible ? "100%" : "0"};
+                background-color: #f0f3fd;
+            `
+        } else if(p.index === 2) {
+            return `
+                width: ${p.isVisible ? "calc(3 * 100% / 10)" : "0"};
+                background-color: #d1dbf9;
+            `
+        }
+    }}
 
-    &:nth-of-type(1) div {
-        ${(p) => {
-            if (p.isVisible) {
-                return `width: calc(100%);`;
-            }
-        }}
-        background-color: #f0f3fd;
-    }
-
-    &:nth-of-type(2) div {
-        ${(p) => {
-            if (p.isVisible) {
-                return `width: calc(3 * 100% / 10);`;
-            }
-        }}
-        background-color: #d1dbf9;
+    span {
+        padding: 0 16px;
+        white-space: nowrap;
     }
 `;

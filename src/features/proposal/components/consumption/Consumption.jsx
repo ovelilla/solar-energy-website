@@ -4,11 +4,14 @@ import {
     Container,
     Text,
     Inputs,
+    NumberContainer,
     InputNumber,
+    Number,
     Range,
     InputRange,
     AxisTitle,
 } from "./styles";
+import More from "@features/proposal/components/consumption/more";
 
 const Consumption = () => {
     const [consumption, setConsumption] = useState(140);
@@ -18,7 +21,7 @@ const Consumption = () => {
     };
 
     return (
-        <ConsumptionStyled>
+        <ConsumptionStyled id="consumption">
             <Container>
                 <Text>
                     <h2>¿Cuál es tu factura mensual?</h2>
@@ -29,14 +32,20 @@ const Consumption = () => {
                 </Text>
 
                 <Inputs>
-                    <InputNumber
-                        type="number"
-                        min={30}
-                        max={240}
-                        step={10}
-                        value={consumption}
-                        onChange={handleChange}
-                    />
+                    <NumberContainer>
+                        <InputNumber
+                            type="number"
+                            min={30}
+                            max={240}
+                            step={10}
+                            value={consumption}
+                            onChange={handleChange}
+                        />
+
+                        <Number>
+                            {consumption} <span>€/mes</span>
+                        </Number>
+                    </NumberContainer>
 
                     <Range>
                         <InputRange
@@ -54,6 +63,8 @@ const Consumption = () => {
                     </Range>
                 </Inputs>
             </Container>
+
+            <More title="Ayúdanos a mejorar tu propuesta aportando información adicional" />
         </ConsumptionStyled>
     );
 };

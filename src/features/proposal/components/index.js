@@ -1,3 +1,4 @@
+import ComparisonBill from "./comparison-bill";
 import Consumption from "./consumption";
 import Faq from "./faq";
 import Footer from "./footer";
@@ -10,8 +11,10 @@ import Progress from "./progress";
 import Subheader from "./subheader";
 import Summary from "./summary";
 import Title from "./title";
+import TypeHouse from "./type-house";
 
 export {
+    ComparisonBill,
     Consumption,
     Faq,
     Footer,
@@ -24,4 +27,5 @@ export {
     Subheader,
     Summary,
     Title,
+    TypeHouse,
 };

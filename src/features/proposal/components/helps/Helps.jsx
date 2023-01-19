@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { HelpsStyled, Title, TextContainer, Subtitle, Text, Chart, Bar } from "./styles";
+import { HelpsStyled, Title, TextContainer, Subtitle, Text, Chart, Column, Bar } from "./styles";
 import useScrollPosition from "@hooks/useScrollPosition";
 
 const Helps = () => {
@@ -33,21 +33,24 @@ const Helps = () => {
                 <Subtitle>Subvenciones</Subtitle>
                 <Text>
                     Con las subvenciones europeas, Next Generation, puedes recibir hasta un 40% de
-                    ayuda para paneles y hasta un 70% de ayuda para baterías. Válido hasta el 31 de
-                    diciembre de 2023 o agotamiento de los fondos.
+                    ayuda para paneles y hasta un 70% de ayuda para baterías.
                 </Text>
             </TextContainer>
 
             <Chart>
-                <Bar isVisible={isVisible}>
+                <Column>
                     <p>Precio total de la instalación</p>
-                    <div>6.430 €</div>
-                </Bar>
+                    <Bar index={1} isVisible={isVisible}>
+                        <span>6.430 €</span>
+                    </Bar>
+                </Column>
 
-                <Bar isVisible={isVisible}>
+                <Column>
                     <p>Cantidad subvencionada</p>
-                    <div>1.170 €</div>
-                </Bar>
+                    <Bar index={2} isVisible={isVisible}>
+                        <span>1.170 €</span>
+                    </Bar>
+                </Column>
             </Chart>
         </HelpsStyled>
     );

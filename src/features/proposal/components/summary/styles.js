@@ -17,7 +17,8 @@ export const Container = styled.div`
     gap: 24px;
     margin-top: 48px;
     padding: 32px;
-    box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+    /* box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px; */
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 8px;
     border-radius: 16px;
 `;
 
@@ -45,10 +46,13 @@ export const Body = styled.div`
 export const Section = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 8px;
 `;
 
 export const Title = styled.h3`
+    display: flex;
+    align-items: center;
+    gap: 16px;
     font-size: 18px;
     font-weight: 600;
     text-transform: uppercase;
@@ -57,7 +61,7 @@ export const Title = styled.h3`
 export const Text = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 4px;
 `;
 
 export const Row = styled.div`

@@ -3,6 +3,7 @@ import { ProposalStyled, Section, Container, Grid, Column } from "./styles";
 import useProposal from "@hooks/useProposal";
 
 import {
+    ComparisonBill,
     Consumption,
     Faq,
     Footer,
@@ -13,6 +14,7 @@ import {
     Subheader,
     Summary,
     Title,
+    TypeHouse,
 } from "@features/proposal/components";
 
 const Proposal = () => {
@@ -27,9 +29,11 @@ const Proposal = () => {
                 <Container>
                     <Grid>
                         <Column>
+                            <TypeHouse />
                             <Panels />
                             <Payment />
                             <Consumption />
+                            <ComparisonBill />
                             <Helps />
                         </Column>
                         <Column>
