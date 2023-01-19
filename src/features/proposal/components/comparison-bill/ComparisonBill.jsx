@@ -30,7 +30,7 @@ const ComparisonBill = () => {
                 </Column>
 
                 <Column>
-                    <p>actura con autoconsumo</p>
+                    <p>Factura con autoconsumo</p>
                     <Bar index={2} isVisible={isVisible}>
                         <span>30 €</span>
                     </Bar>
