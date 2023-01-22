@@ -56,6 +56,7 @@ export const Info = styled.div`
 
     span:last-of-type {
         color: ${white};
+        font-size: 20px;
         font-weight: 600;
         letter-spacing: -0.4px;
 

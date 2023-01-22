@@ -12,9 +12,9 @@ export const Main = styled.main`
 const ProtectedRoute = () => {
     const { proposal } = useProposal();
 
-    // if (!proposal.placeId) {
-    //     return <Navigate to="/" />;
-    // }
+    if (!proposal.placeId) {
+        return <Navigate to="/" />;
+    }
 
     return <Outlet />;
 };

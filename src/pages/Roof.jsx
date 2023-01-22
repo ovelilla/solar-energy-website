@@ -19,7 +19,7 @@ const Roof = () => {
         return (
             <>
                 <Header />
-                <Loading />;
+                <Loading />
             </>
         );
     }

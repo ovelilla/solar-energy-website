@@ -8,7 +8,10 @@ export const SummaryStyled = styled.div`
 
     position: sticky;
     ${topHeader}
-    min-width: 320px;
+
+    ${media(breakpoints.sm)} {
+        min-width: 320px;
+    }
 `;
 
 export const Container = styled.div`

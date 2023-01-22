@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 import { white, slate } from "@shared/styles/colors";
-import { breakpoints, media } from "@shared/styles/sizes";
+import { breakpoints, media,section, container } from "@shared/styles/sizes";
 
 export const HeroStyled = styled.section`
     display: flex;
@@ -9,6 +9,7 @@ export const HeroStyled = styled.section`
     position: relative;
     width: 100%;
     height: 100dvh;
+    ${section}
     background-color: ${slate[50]};
 
     ${media(breakpoints.sm)} {
@@ -32,28 +33,28 @@ export const Container = styled.div`
     gap: 32px;
     width: 100%;
     max-width: ${breakpoints.xl}px;
-    padding: 96px 16px;
+    padding: 96px 0;
     padding-top: 120px;
 
     ${media(breakpoints.sm)} {
-        padding: 120px 24px;
+        padding: 120px 0;
         padding-top: 144px;
     }
 
     ${media(breakpoints.md)} {
         gap: 48x;
-        padding: 144px 32px;
+        padding: 144px 0;
         padding-top: 168px;
     }
 
     ${media(breakpoints.lg)} {
         gap: 56px;
-        padding: 168px 32px;
+        padding: 168px 0;
         padding-top: 192px;
     }
 
     ${media(breakpoints.xl)} {
-        padding: 192px 32px;
+        padding: 192px 0;
         padding-top: 216px;
     }
 `;
