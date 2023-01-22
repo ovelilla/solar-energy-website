@@ -1,0 +1,48 @@
+import styled from "@emotion/styled";
+import { white } from "@shared/styles/colors";
+import { breakpoints, media } from "@shared/styles/sizes";
+
+export const Button = styled.button`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1 0 auto;
+    gap: 8px;
+    position: relative;
+    height: 48px;
+    padding: ${(p) => (p.count > 1 ? "0 16px 0 24px" : "0 16px")};
+    background-color: #28365e;
+    font-weight: 500;
+    letter-spacing: -0.8px;
+    color: ${white};
+    border: 2px solid #28365e;
+    border-radius: 48px;
+
+    &:hover {
+        background-color: #1e2946;
+        color: #ffffff;
+        border-color: #1e2946;
+    }
+
+    &:active {
+        background-color: #1e2946;
+        color: #ffffff;
+        border-color: #1e2946;
+    }
+
+    &:disabled {
+        background-color: #1e2946;
+        color: #ffffff;
+        border-color: #1e2946;
+        cursor: default;
+    }
+
+    ${media(breakpoints.sm)} {
+        flex-grow: 0;
+    }
+
+    svg {
+        width: 32px;
+        height: 32px;
+    }
+`;

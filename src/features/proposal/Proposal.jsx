@@ -1,25 +1,19 @@
 import { ProposalStyled, Section, Container, Grid, Column } from "./styles";
 
-import useProposal from "@hooks/useProposal";
-
-import {
-    ComparisonBill,
-    Consumption,
-    Faq,
-    Footer,
-    Helps,
-    Panels,
-    Payment,
-    Progress,
-    Subheader,
-    Summary,
-    Title,
-    TypeHouse,
-} from "@features/proposal/components";
+import ComparisonBill from "@features/proposal/components/comparison-bill";
+import Consumption from "@features/proposal/components/consumption";
+import Faq from "@features/proposal/components/faq";
+import Footer from "@features/proposal/components/footer";
+import Helps from "@features/proposal/components/helps";
+import Panels from "@features/proposal/components/panels";
+import Payment from "@features/proposal/components/payment";
+import Progress from "@features/proposal/components/progress";
+import Steps from "@features/proposal/components/steps";
+import Subheader from "@features/proposal/components/subheader";
+import Summary from "@features/proposal/components/summary";
+import Title from "@features/proposal/components/title";
 
 const Proposal = () => {
-    const { proposal } = useProposal();
-
     return (
         <ProposalStyled>
             <Subheader />
@@ -29,11 +23,10 @@ const Proposal = () => {
                 <Container>
                     <Grid>
                         <Column>
-                            <TypeHouse />
-                            <Panels />
-                            <Payment />
                             <Consumption />
                             <ComparisonBill />
+                            <Panels />
+                            <Payment />
                             <Helps />
                         </Column>
                         <Column>
@@ -43,6 +36,7 @@ const Proposal = () => {
                 </Container>
             </Section>
             <div>
+                <Steps />
                 <Faq />
                 <Footer />
             </div>

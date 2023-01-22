@@ -1,3 +1,4 @@
-import Button from "./Button";
+import Primary from "./primary";
+import Pulse from "./pulse";
 
-export default Button;
+export { Primary, Pulse };

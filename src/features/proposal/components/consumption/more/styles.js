@@ -53,8 +53,8 @@ export const Button = styled.button`
 `;
 
 export const Collapse = styled.div`
-    overflow: hidden;
-    height: ${(p) => (p.collapseHeight === -1 ? "auto" : `${p.collapseHeight}px`)};
+    overflow: ${(p) => (p.open && p.transitioned ? "visible" : "hidden")};
+    height: ${(p) => `${p.collapseHeight}px`};
     transition: height 0.2s ease-in-out;
 `;
 
@@ -135,3 +135,62 @@ export const Notice = styled.p`
     color: rgb(122, 124, 163);
     letter-spacing: -0.2px;
 `;
+
+export const selectStyles = (error) => ({
+    control: (provided, state) => ({
+        ...provided,
+        height: "48px",
+        marginTop: "4px",
+        border: "none",
+        outline: "none",
+        borderRadius: "4px",
+        boxShadow:
+        error.length > 0
+                ? state.isFocused
+                    ? "rgb(220 38 38) 0px 0px 0px 2px"
+                    : "rgb(220 38 38) 0px 0px 0px 1px"
+                : state.isFocused
+                ? "rgb(105 121 162) 0px 0px 0px 2px"
+                : "rgb(215 220 245) 0px 0px 0px 1px",
+
+        "&:hover": {
+            boxShadow:
+            error.length > 0
+                    ? !state.isFocused && "rgb(220 38 38) 0px 0px 0px 1px"
+                    : !state.isFocused && "rgb(105 121 162) 0px 0px 0px 1px",
+        },
+    }),
+    valueContainer: (provided, state) => ({
+        ...provided,
+        padding: "0 16px",
+    }),
+    singleValue: (provided, state) => ({
+        ...provided,
+        color: "#56627a",
+        margin: "0",
+    }),
+    input: (provided, state) => ({
+        ...provided,
+        margin: "0",
+    }),
+    groupHeading: (provided, state) => ({
+        ...provided,
+        display: "flex",
+        alignItems: "center",
+        height: "40px",
+        padding: "0 16px",
+        fontSize: "14px",
+    }),
+    option: (provided, state) => ({
+        ...provided,
+        display: "flex",
+        alignItems: "center",
+        height: "48px",
+        padding: "0 16px",
+        color: "#56627a",
+        backgroundColor: state.isSelected ? "rgb(245, 246, 255);" : "#fff",
+        "&:hover": {
+            backgroundColor: !state.isSelected && "rgb(250, 250, 255);",
+        },
+    }),
+});

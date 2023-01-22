@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 
-import { Loading, Header } from "@features/proposal/components";
 import { default as ProposalComponent } from "@features/proposal";
+import Loading from "@features/proposal/components/loading";
+import Header from "@features/proposal/components/header";
 
 import useProposal from "@hooks/useProposal";
 

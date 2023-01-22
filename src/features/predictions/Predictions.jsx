@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 
-import usePredictions from "@hooks/usePredictions";
+import useProposal from "@hooks/useProposal";
 
 import Form from "@features/predictions/form";
 import List from "@features/predictions/list";
@@ -11,7 +11,7 @@ const Predictions = () => {
     const [inputValue, setInputValue] = useState("");
     const [selectedIndex, setSelectedIndex] = useState(-1);
 
-    const { predictions, setPredictions, fetchPredictions } = usePredictions();
+    const { predictions, setPredictions } = useProposal();
     const formRef = useRef(null);
 
     const handleClickOutside = (e) => {
@@ -32,9 +32,6 @@ const Predictions = () => {
     return (
         <PredictionsStyled ref={formRef}>
             <Form
-                predictions={predictions}
-                setPredictions={setPredictions}
-                fetchPredictions={fetchPredictions}
                 inputValue={inputValue}
                 setInputValue={setInputValue}
                 selectedIndex={selectedIndex}
@@ -43,8 +40,7 @@ const Predictions = () => {
 
             {predictions.length > 0 && (
                 <List
-                    predictions={predictions}
-                    setPredictions={setPredictions}
+                    inputValue={inputValue}
                     setInputValue={setInputValue}
                     selectedIndex={selectedIndex}
                     setSelectedIndex={setSelectedIndex}

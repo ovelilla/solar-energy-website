@@ -12,7 +12,7 @@ import {
 } from "./styles";
 
 import Modal from "@features/ui/modal";
-import Button from "@features/ui/button";
+import { Primary } from "@features/ui/button";
 
 import useForm from "@hooks/useForm";
 
@@ -107,7 +107,7 @@ const SendProposal = ({ open, onClose }) => {
                         {errors.email && <Error>{errors.email}</Error>}
                     </Field>
 
-                    <Button type="submit">Enviar</Button>
+                    <Primary type="submit">Enviar</Primary>
 
                     <Notice>
                         Al enviar sus datos, acepta nuestra política de privacidad y cookies. Las

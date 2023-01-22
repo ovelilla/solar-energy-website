@@ -1,46 +1,41 @@
 import styled from "@emotion/styled";
-import { white, slate } from "@shared/styles/colors";
-import { breakpoints, media, section } from "@shared/styles/sizes";
-
-export const FooterStyled = styled.div`
-    display: flex;
-    justify-content: center;
-    z-index: 600;
-    position: sticky;
-    top: 0;
-    left: 0;
-    width: 100%;
-    ${section}
-    background-color: ${white};
-
-    ${media(breakpoints.sm)} {
-        border-top: 1px solid ${slate[100]};
-    }
-`;
-
-export const Container = styled.div`
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    width: 100%;
-    padding: 24px 0;
-    max-width: ${breakpoints.xl}px;
-`;
+import { white } from "@shared/styles/colors";
+import { breakpoints, media } from "@shared/styles/sizes";
 
 export const Button = styled.button`
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-grow: 1;
+    flex: 1 0 auto;
     gap: 8px;
     position: relative;
     height: 48px;
-    padding: 0 16px 0 24px;
+    padding: ${(p) => (p.count > 1 ? "0 16px 0 24px" : "0 16px")};
     background-color: #28365e;
     font-weight: 500;
-    color: ${white};
     letter-spacing: -0.8px;
+    color: ${white};
+    border: 2px solid #28365e;
     border-radius: 48px;
+
+    &:hover {
+        background-color: #1e2946;
+        color: #ffffff;
+        border-color: #1e2946;
+    }
+
+    &:active {
+        background-color: #1e2946;
+        color: #ffffff;
+        border-color: #1e2946;
+    }
+
+    &:disabled {
+        background-color: #1e2946;
+        color: #ffffff;
+        border-color: #1e2946;
+        cursor: default;
+    }
 
     ${media(breakpoints.sm)} {
         flex-grow: 0;

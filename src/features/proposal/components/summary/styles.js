@@ -8,17 +8,16 @@ export const SummaryStyled = styled.div`
 
     position: sticky;
     ${topHeader}
-    min-width: 300px;
+    min-width: 320px;
 `;
 
 export const Container = styled.div`
     display: flex;
     flex-direction: column;
     gap: 24px;
-    margin-top: 48px;
+    margin-top: 40px;
     padding: 32px;
-    /* box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px; */
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 8px;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
     border-radius: 16px;
 `;
 
@@ -51,11 +50,13 @@ export const Section = styled.div`
 
 export const Title = styled.h3`
     display: flex;
+    justify-content: space-between;
     align-items: center;
     gap: 16px;
     font-size: 18px;
     font-weight: 600;
     text-transform: uppercase;
+    letter-spacing: -0.4px;
 `;
 
 export const Text = styled.div`

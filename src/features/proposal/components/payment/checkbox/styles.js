@@ -8,8 +8,12 @@ export const Label = styled.label`
     align-items: center;
     gap: 8px;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
+
+    ${media(breakpoints.sm)} {
+        font-size: 18px;
+    }
 
     &:hover span:first-of-type {
         background-color: #e0e7fb;
@@ -41,7 +45,6 @@ export const Icon = styled.span`
     height: 48px;
     border-radius: 50%;
     color: #28365e;
-    
 
     &:hover {
         background-color: #e0e7fb;

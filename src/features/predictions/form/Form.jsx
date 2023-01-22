@@ -10,18 +10,12 @@ import Spinner from "@features/ui/spinner";
 import { FormStyled, Field, StyledMapPinIcon, Input, Button, StyledArrowRightIcon } from "./styles";
 import { white } from "@shared/styles/colors";
 
-const Form = ({
-    predictions,
-    setPredictions,
-    fetchPredictions,
-    inputValue,
-    setInputValue,
-    selectedIndex,
-    setSelectedIndex,
-}) => {
+const Form = ({ inputValue, setInputValue, selectedIndex, setSelectedIndex }) => {
     const [isLoading, setIsLoading] = useState(false);
+
     const debouncedInputValue = useDebounce(inputValue, 500);
-    const { proposal, setProposal, resetProposal } = useProposal();
+    const { predictions, setPredictions, fetchPredictions, proposal, setProposal, resetProposal } =
+        useProposal();
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {

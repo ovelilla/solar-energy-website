@@ -1,9 +1,8 @@
 import { Container, ListStyled, Item } from "./styles";
-
 import useProposal from "@hooks/useProposal";
 
-const List = ({ predictions, setPredictions, setInputValue, selectedIndex, setSelectedIndex }) => {
-    const { proposal, setProposal } = useProposal();
+const List = ({ setInputValue, selectedIndex, setSelectedIndex }) => {
+    const { predictions, setPredictions, proposal, setProposal } = useProposal();
 
     const handleClick = (prediction) => {
         setPredictions([]);

@@ -7,7 +7,6 @@ export const FaqStyled = styled.div`
     display: flex;
     justify-content: center;
     width: 100%;
-    margin-top: 24px;
     ${section}
     background-color: rgb(250, 250, 255);
 `;

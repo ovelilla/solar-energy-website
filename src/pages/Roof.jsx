@@ -2,7 +2,8 @@ import { useEffect } from "react";
 
 import useProposal from "@hooks/useProposal";
 
-import { Loading, Header } from "@features/roof/components";
+import Loading from "@features/roof/loading";
+import Header from "@features/roof/header";
 import { default as RoofComponent } from "@features/roof";
 
 const Roof = () => {

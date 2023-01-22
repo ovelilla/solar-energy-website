@@ -7,6 +7,7 @@ export const ConsumptionStyled = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
+    margin-top: 40px;
     background-color: rgb(250, 250, 255);
     border-radius: 16px;
     scroll-margin-top: 64px;

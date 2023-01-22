@@ -2,7 +2,6 @@ import { useState } from "react";
 
 const usePredictions = () => {
     const [predictions, setPredictions] = useState([]);
-    const [autocompleteService] = useState(new google.maps.places.AutocompleteService());
 
     const fetchPredictions = (inputValue) => {
         if (!inputValue) {
@@ -15,6 +14,8 @@ const usePredictions = () => {
             types: ["address"],
             componentRestrictions: { country: "es" },
         };
+
+        const autocompleteService = new google.maps.places.AutocompleteService();
 
         autocompleteService.getPlacePredictions(options, (predictions, status) => {
             if (status !== google.maps.places.PlacesServiceStatus.OK) {

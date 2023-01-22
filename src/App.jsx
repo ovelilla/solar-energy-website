@@ -7,7 +7,6 @@ import ProtectedRoute from "@routes/ProtectedRoute";
 
 import Home from "@pages/Home";
 import Roof from "@pages/Roof";
-import Consumption from "@pages/Consumption";
 import Proposal from "@pages/Proposal";
 
 function App() {
@@ -21,8 +20,6 @@ function App() {
                     <Route element={<ProtectedRoute />}>
                         <Route path="tejado" element={<Navigate to="/" />} />
                         <Route path="tejado/:id" element={<Roof />} />
-                        <Route path="consumo" element={<Navigate to="/" />} />
-                        <Route path="consumo/:id" element={<Consumption />} />
                         <Route path="propuesta" element={<Navigate to="/" />} />
                         <Route path="propuesta/:id" element={<Proposal />} />
                     </Route>
