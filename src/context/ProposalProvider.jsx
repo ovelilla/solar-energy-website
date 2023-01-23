@@ -56,7 +56,6 @@ export const ProposalProvider = ({ children }) => {
         try {
             const { data } = await axios.post("/proposal", proposal, config);
 
-            console.log(data);
             setProposal(data.proposal);
 
             setTimeout(() => {
