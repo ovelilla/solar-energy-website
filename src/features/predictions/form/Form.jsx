@@ -1,6 +1,4 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { v4 as uuidv4 } from "uuid";
+import { useEffect } from "react";
 
 import useDebounce from "@hooks/useDebounce";
 import useProposal from "@hooks/useProposal";
@@ -11,33 +9,29 @@ import { FormStyled, Field, StyledMapPinIcon, Input, Button, StyledArrowRightIco
 import { white } from "@shared/styles/colors";
 
 const Form = ({ inputValue, setInputValue, selectedIndex, setSelectedIndex }) => {
-    const [isLoading, setIsLoading] = useState(false);
-
+    
     const debouncedInputValue = useDebounce(inputValue, 500);
-    const { predictions, setPredictions, fetchPredictions, proposal, setProposal, resetProposal } =
-        useProposal();
-    const navigate = useNavigate();
+    const {
+        isPredictionLoading,
+        setIsPredictionLoading,
+        predictions,
+        setPredictions,
+        fetchPredictions,
+        proposal,
+        setProposal,
+        createProposal,
+        resetProposal,
+    } = useProposal();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        setIsLoading(true);
-
-        setTimeout(() => {
-            setIsLoading(false);
-
-            const id = uuidv4();
-            setProposal({ ...proposal, id });
-
-            if (proposal.placeId) {
-                navigate("/tejado/" + id);
-            }
-        }, 1000);
+        await createProposal();
     };
 
     const handleInput = async (e) => {
         setInputValue(e.target.value);
-        setIsLoading(true);
+        setIsPredictionLoading(true);
         setSelectedIndex(-1);
         resetProposal();
     };
@@ -74,7 +68,7 @@ const Form = ({ inputValue, setInputValue, selectedIndex, setSelectedIndex }) =>
         }
 
         fetchPredictions(debouncedInputValue);
-        setIsLoading(false);
+        setIsPredictionLoading(false);
     }, [debouncedInputValue]);
 
     return (
@@ -91,7 +85,11 @@ const Form = ({ inputValue, setInputValue, selectedIndex, setSelectedIndex }) =>
                 />
 
                 <Button type="submit" aria-label="Buscar">
-                    {isLoading ? <Spinner color={white} width={4} /> : <StyledArrowRightIcon />}
+                    {isPredictionLoading ? (
+                        <Spinner color={white} width={4} />
+                    ) : (
+                        <StyledArrowRightIcon />
+                    )}
                 </Button>
             </Field>
         </FormStyled>

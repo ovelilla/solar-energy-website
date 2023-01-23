@@ -19,7 +19,7 @@ export const Container = styled.div`
     p {
         font-size: 16px;
         font-weight: 500;
-        color: #1e3a8a;
+        color: #28365e;
         animation: in 1s ease-in-out 0.5s backwards;
 
         ${media(breakpoints.sm)} {
@@ -99,7 +99,7 @@ export const SpinnerSvg = styled.svg`
 `;
 
 export const SpinnerCircle = styled.circle`
-    stroke: #1e3a8a;
+    stroke: #28365e;
     stroke-dasharray: 1, 200;
     stroke-dashoffset: 0;
     animation: dash 2s ease-in-out infinite;
@@ -141,7 +141,7 @@ export const Circle = styled.div`
     width: 72px;
     height: 72px;
     border-radius: 50%;
-    background-color: #1e3a8a;
+    background-color: #28365e;
     animation: scale-circle 2s ease-in-out infinite;
 
     @keyframes scale-circle {

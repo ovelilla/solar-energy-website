@@ -1,7 +1,8 @@
+import { useEffect } from "react";
 import { Container, ListStyled, Item } from "./styles";
 import useProposal from "@hooks/useProposal";
 
-const List = ({ setInputValue, selectedIndex, setSelectedIndex }) => {
+const List = ({ formRef, setInputValue, selectedIndex, setSelectedIndex }) => {
     const { predictions, setPredictions, proposal, setProposal } = useProposal();
 
     const handleClick = (prediction) => {
@@ -14,6 +15,21 @@ const List = ({ setInputValue, selectedIndex, setSelectedIndex }) => {
             address: prediction.description,
         });
     };
+
+    const handleClickOutside = (e) => {
+        if (formRef.current && !formRef.current.contains(e.target)) {
+            setSelectedIndex(-1);
+            setInputValue("");
+            setPredictions([]);
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener("click", handleClickOutside);
+        return () => {
+            document.removeEventListener("click", handleClickOutside);
+        };
+    }, []);
 
     return (
         <Container>

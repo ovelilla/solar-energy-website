@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 
 import useProposal from "@hooks/useProposal";
 
@@ -11,23 +11,8 @@ const Predictions = () => {
     const [inputValue, setInputValue] = useState("");
     const [selectedIndex, setSelectedIndex] = useState(-1);
 
-    const { predictions, setPredictions } = useProposal();
+    const { predictions } = useProposal();
     const formRef = useRef(null);
-
-    const handleClickOutside = (e) => {
-        if (formRef.current && !formRef.current.contains(e.target)) {
-            setSelectedIndex(-1);
-            setInputValue("");
-            setPredictions([]);
-        }
-    };
-
-    useEffect(() => {
-        document.addEventListener("click", handleClickOutside);
-        return () => {
-            document.removeEventListener("click", handleClickOutside);
-        };
-    }, []);
 
     return (
         <PredictionsStyled ref={formRef}>
@@ -40,6 +25,7 @@ const Predictions = () => {
 
             {predictions.length > 0 && (
                 <List
+                    formRef={formRef}
                     inputValue={inputValue}
                     setInputValue={setInputValue}
                     selectedIndex={selectedIndex}
