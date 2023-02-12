@@ -69,8 +69,7 @@ export const ProposalProvider = ({ children }) => {
     const readPredefined = async () => {
         try {
             const { data } = await axios.get("/predefined");
-            console.log(data);
-
+            
             setProposal({
                 ...proposal,
                 consumption: {

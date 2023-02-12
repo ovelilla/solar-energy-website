@@ -81,6 +81,10 @@ export const Input = styled.input`
     color: ${slate[700]};
     letter-spacing: -0.8px;
 
+    &:disabled {
+        background-color: #ffffff;
+    }
+
     ${media(breakpoints.sm)} {
         font-size: 20px;
     }

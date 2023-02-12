@@ -15,7 +15,6 @@ const Form = ({ inputValue, setInputValue, selectedIndex, setSelectedIndex }) =>
         setPredictions,
         fetchPredictions,
         handlePrediction,
-        proposal,
         resetProposal,
     } = useProposal();
 
@@ -46,7 +45,7 @@ const Form = ({ inputValue, setInputValue, selectedIndex, setSelectedIndex }) =>
     };
 
     useEffect(() => {
-        if (inputValue === debouncedInputValue && !proposal) {
+        if (inputValue === debouncedInputValue && !disabled) {
             fetchPredictions(debouncedInputValue);
             setLoading(false);
         }
