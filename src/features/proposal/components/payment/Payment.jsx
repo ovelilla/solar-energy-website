@@ -23,7 +23,7 @@ const Payment = () => {
     const { proposal, setProposal } = useProposal();
     const { change, setChange, setUpdate } = useCalculator();
 
-    const selected = proposal?.payment?.method === "cash" || proposal?.payment?.method === "financing" ? 0 : 1;
+    const selected = proposal.payment.method === "cash" || proposal.payment.method === "financing" || !proposal.payment.method ? 0 : 1;
 
     const [selectedOption, setSelectedOption] = useState(selected);
 
