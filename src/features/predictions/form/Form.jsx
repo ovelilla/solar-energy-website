@@ -1,37 +1,27 @@
 import { useEffect } from "react";
-
 import useDebounce from "@hooks/useDebounce";
 import useProposal from "@hooks/useProposal";
-
 import Spinner from "@features/ui/spinner";
-
 import { FormStyled, Field, StyledMapPinIcon, Input, Button, StyledArrowRightIcon } from "./styles";
 import { white } from "@shared/styles/colors";
 
 const Form = ({ inputValue, setInputValue, selectedIndex, setSelectedIndex }) => {
-    
-    const debouncedInputValue = useDebounce(inputValue, 500);
+    const debouncedInputValue = useDebounce(inputValue, 300);
     const {
-        isPredictionLoading,
-        setIsPredictionLoading,
+        loading,
+        setLoading,
+        disabled,
         predictions,
         setPredictions,
         fetchPredictions,
+        handlePrediction,
         proposal,
-        setProposal,
-        createProposal,
         resetProposal,
     } = useProposal();
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        await createProposal();
-    };
-
-    const handleInput = async (e) => {
+    const handleInput = (e) => {
         setInputValue(e.target.value);
-        setIsPredictionLoading(true);
+        setLoading(true);
         setSelectedIndex(-1);
         resetProposal();
     };
@@ -42,37 +32,28 @@ const Form = ({ inputValue, setInputValue, selectedIndex, setSelectedIndex }) =>
         if (e.key === "ArrowDown") {
             setSelectedIndex((selectedIndex + 1) % predictionsLength);
         } else if (e.key === "ArrowUp") {
-            setSelectedIndex(
-                selectedIndex === -1
-                    ? predictionsLength - 1
-                    : (selectedIndex - 1 + predictionsLength) % predictionsLength
-            );
+            setSelectedIndex((selectedIndex - 1 + predictionsLength) % predictionsLength);
         } else if (e.key === "Enter") {
-            if (selectedIndex === -1) {
-                return;
+            e.preventDefault();
+
+            if (selectedIndex !== -1) {
+                setSelectedIndex(-1);
+                setInputValue(predictions[selectedIndex].description);
+                setPredictions([]);
+                handlePrediction(predictions[selectedIndex]);
             }
-            setSelectedIndex(-1);
-            setInputValue(predictions[selectedIndex].description);
-            setPredictions([]);
-            setProposal({
-                ...proposal,
-                placeId: predictions[selectedIndex].place_id,
-                address: predictions[selectedIndex].description,
-            });
         }
     };
 
     useEffect(() => {
-        if (proposal.placeId || inputValue !== debouncedInputValue) {
-            return;
+        if (inputValue === debouncedInputValue && !proposal) {
+            fetchPredictions(debouncedInputValue);
+            setLoading(false);
         }
-
-        fetchPredictions(debouncedInputValue);
-        setIsPredictionLoading(false);
     }, [debouncedInputValue]);
 
     return (
-        <FormStyled predictions={predictions} onSubmit={handleSubmit}>
+        <FormStyled predictions={predictions} onSubmit={(e) => e.preventDefault()}>
             <Field predictions={predictions}>
                 <StyledMapPinIcon />
 
@@ -82,14 +63,11 @@ const Form = ({ inputValue, setInputValue, selectedIndex, setSelectedIndex }) =>
                     value={inputValue}
                     onInput={handleInput}
                     onKeyDown={handleKeyDown}
+                    disabled={disabled}
                 />
 
-                <Button type="submit" aria-label="Buscar">
-                    {isPredictionLoading ? (
-                        <Spinner color={white} width={4} />
-                    ) : (
-                        <StyledArrowRightIcon />
-                    )}
+                <Button type="submit" aria-label="Buscar" disabled={loading}>
+                    {loading ? <Spinner color={white} width={4} /> : <StyledArrowRightIcon />}
                 </Button>
             </Field>
         </FormStyled>

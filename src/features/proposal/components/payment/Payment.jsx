@@ -13,12 +13,33 @@ import {
     Option,
     OptionBackground,
 } from "./styles";
-
 import Cash from "@features/proposal/components/payment/cash";
 import Rental from "@features/proposal/components/payment/rental";
+import useProposal from "@hooks/useProposal";
+import useCalculator from "@hooks/useCalculator";
 
 const Payment = () => {
-    const [selectedOption, setSelectedOption] = useState(0);
+    
+    const { proposal, setProposal } = useProposal();
+    const { change, setChange, setUpdate } = useCalculator();
+
+    const selected = proposal?.payment?.method === "cash" || proposal?.payment?.method === "financing" ? 0 : 1;
+
+    const [selectedOption, setSelectedOption] = useState(selected);
+
+    const handleClickOption = (index) => {
+        setSelectedOption(index);
+
+        setChange(!change);
+        setProposal({
+            ...proposal,
+            payment: {
+                ...proposal.payment,
+                method: index === 0 ? "cash" : "rental",
+            },
+        });
+        setUpdate(true);
+    };
 
     return (
         <PaymentStyled>
@@ -38,12 +59,12 @@ const Payment = () => {
                         </Bar>
 
                         <Options>
-                            <Option onClick={() => setSelectedOption(0)}>
+                            <Option onClick={() => handleClickOption(0)}>
                                 <p>Pago al contado</p>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                             </Option>
 
-                            <Option onClick={() => setSelectedOption(1)}>
+                            <Option onClick={() => handleClickOption(1)}>
                                 <p>Alquiler</p>
                                 <p>Nam sed odio vehicula, interdum tellus nec.</p>
                             </Option>

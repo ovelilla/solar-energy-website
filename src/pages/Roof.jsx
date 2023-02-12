@@ -1,21 +1,24 @@
-import { useEffect } from "react";
-
+import { useState, useEffect } from "react";
 import useProposal from "@hooks/useProposal";
-
 import Loading from "@features/roof/loading";
 import Header from "@features/roof/header";
 import { default as RoofComponent } from "@features/roof";
 
 const Roof = () => {
-    const { isRoofLoading, setIsRoofLoading, proposal } = useProposal();
+    const [loading, setLoading] = useState(true);
+    const { proposal, readPredefined } = useProposal();
 
     useEffect(() => {
+        if (loading && !proposal.installation && !proposal.consumption) {
+            readPredefined();
+        }
+
         setTimeout(() => {
-            setIsRoofLoading(false);
+            setLoading(false);
         }, 3000);
     }, []);
 
-    if (proposal.placeId && isRoofLoading) {
+    if (loading) {
         return (
             <>
                 <Header />

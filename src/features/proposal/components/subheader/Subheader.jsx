@@ -1,10 +1,12 @@
 import { SubheaderStyled, Container, Info, Line, Action, Button } from "./styles";
-
 import useWindowSize from "@hooks/useWindowSize";
 import { breakpoints } from "@shared/styles/sizes";
+import useProposal from "@hooks/useProposal";
+import currencyFormat from "@utils/currencyFormat";
 
 const Subheader = () => {
     const { width } = useWindowSize();
+    const { proposal } = useProposal();
 
     return (
         <SubheaderStyled>
@@ -12,7 +14,7 @@ const Subheader = () => {
                 <Info>
                     <div>
                         <span>PVP, IVA incluido</span>
-                        <span>6.430 €</span>
+                        <span>{currencyFormat(proposal.summary.economic.total, 0)}</span>
                     </div>
 
                     {width >= breakpoints.md && (
@@ -21,7 +23,7 @@ const Subheader = () => {
 
                             <div>
                                 <span>Ahorro estimado</span>
-                                <span>34.000 €</span>
+                                <span>{currencyFormat(proposal.summary.savings.yearly25, 0)}</span>
                             </div>
                         </>
                     )}

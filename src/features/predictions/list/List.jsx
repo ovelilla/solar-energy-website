@@ -3,17 +3,13 @@ import { Container, ListStyled, Item } from "./styles";
 import useProposal from "@hooks/useProposal";
 
 const List = ({ formRef, setInputValue, selectedIndex, setSelectedIndex }) => {
-    const { predictions, setPredictions, proposal, setProposal } = useProposal();
+    const { predictions, setPredictions, handlePrediction } = useProposal();
 
     const handleClick = (prediction) => {
         setPredictions([]);
         setInputValue(prediction.description);
         setSelectedIndex(-1);
-        setProposal({
-            ...proposal,
-            placeId: prediction.place_id,
-            address: prediction.description,
-        });
+        handlePrediction(prediction);
     };
 
     const handleClickOutside = (e) => {
@@ -44,7 +40,7 @@ const List = ({ formRef, setInputValue, selectedIndex, setSelectedIndex }) => {
                                 handleClick(prediction);
                             }}
                         >
-                            {prediction.terms[0].value}, {prediction.terms[1].value}
+                            {prediction.description}
                         </Item>
                     ))}
                 </ListStyled>

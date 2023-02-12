@@ -16,27 +16,51 @@ import {
     InfoButton,
     InfoIcon,
 } from "./styles";
-
 import CustomOffer from "@features/proposal/components/custom-offer";
 import Information from "@features/proposal/components/panels/information";
 import Battery from "@features/proposal/components/panels/battery";
-
 import Check from "@shared/icons/Check";
 import Info from "@shared/icons/Info";
+import useProposal from "@hooks/useProposal";
+import useCalculator from "@hooks/useCalculator";
 
 const Panels = () => {
     const [openModalCustomOffer, setOpenModalCustomOffer] = useState(false);
     const [openModalInformation, setOpenModalInformation] = useState(false);
 
-    const [panels, setPanels] = useState(10);
-    const [type, setType] = useState("standard");
+    const { proposal, setProposal } = useProposal();
+    const { change, setChange, setUpdate } = useCalculator();
 
     const handleChange = (e) => {
-        setPanels(e.target.value);
+        if (e.target.value < 5) {
+            return;
+        }
 
         if (e.target.value > 30) {
             setOpenModalCustomOffer(true);
+            return;
         }
+
+        setChange(!change);
+        setProposal({
+            ...proposal,
+            installation: {
+                ...proposal.installation,
+                numberPanels: parseInt(e.target.value),
+            },
+        });
+    };
+
+    const handleClick = (type) => {
+        setChange(!change);
+        setProposal({
+            ...proposal,
+            installation: {
+                ...proposal.installation,
+                installationType: type,
+            },
+        });
+        setUpdate(true);
     };
 
     return (
@@ -69,12 +93,18 @@ const Panels = () => {
                                 min={1}
                                 max={300}
                                 step={1}
-                                value={panels}
-                                onChange={handleChange}
+                                value={proposal.installation.numberPanels}
+                                onChange={(e) =>{
+                                    handleChange(e);
+                                    setUpdate(true);
+                                }}
                             />
 
                             <Number>
-                                {panels} <span>{panels > 1 ? "paneles" : "panel"}</span>
+                                {proposal.installation.numberPanels}{" "}
+                                <span>
+                                    {proposal.installation.numberPanels > 1 ? "paneles" : "panel"}
+                                </span>
                             </Number>
                         </NumberContainer>
 
@@ -84,8 +114,10 @@ const Panels = () => {
                                 min={5}
                                 max={30}
                                 step={1}
-                                value={panels}
+                                value={proposal.installation.numberPanels}
                                 onChange={handleChange}
+                                onMouseUp={() => setUpdate(true)}
+                                onTouchEnd={() => setUpdate(true)}
                             />
                             <AxisTitle>
                                 <span>5 paneles</span>
@@ -96,27 +128,36 @@ const Panels = () => {
 
                     <Type>
                         <TypeButton
-                            onClick={() => setType("standard")}
-                            active={type === "standard"}
+                            onClick={() => handleClick("String")}
+                            active={proposal.installation.installationType === "String"}
                         >
                             <div>
                                 <span>Premium</span>
                                 <span>Producción 415 W</span>
                             </div>
 
-                            <TypeButtonIcon active={type === "standard"}>
-                                {type === "standard" && <Check />}
+                            <TypeButtonIcon
+                                active={proposal.installation.installationType === "String"}
+                            >
+                                {proposal.installation.installationType === "String" && <Check />}
                             </TypeButtonIcon>
                         </TypeButton>
 
-                        <TypeButton onClick={() => setType("premium")} active={type === "premium"}>
+                        <TypeButton
+                            onClick={() => handleClick("Microinversor")}
+                            active={proposal.installation.installationType === "Microinversor"}
+                        >
                             <div>
                                 <span>Microinversores</span>
                                 <span>Producción 415 W</span>
                             </div>
 
-                            <TypeButtonIcon active={type === "premium"}>
-                                {type === "premium" && <Check />}
+                            <TypeButtonIcon
+                                active={proposal.installation.installationType === "Microinversor"}
+                            >
+                                {proposal.installation.installationType === "Microinversor" && (
+                                    <Check />
+                                )}
                             </TypeButtonIcon>
                         </TypeButton>
                     </Type>

@@ -27,7 +27,7 @@ const Map = () => {
         const service = new google.maps.places.PlacesService(map);
 
         const request = {
-            placeId: proposal.placeId,
+            placeId: proposal.address.placeId,
             fields: ["name", "geometry"],
         };
 
@@ -54,14 +54,43 @@ const Map = () => {
                 if (status === "OK") {
                     if (results[0]) {
                         const placeId = results[0].place_id;
-                        const address = results[0].formatted_address;
+                        const formattedAddress = results[0].formatted_address;
+                        const addressComponents = {};
+
+                        for (const component of results[0].address_components) {
+                            if (component.types.includes("route")) {
+                                addressComponents.street = component.long_name;
+                            }
+                            if (component.types.includes("street_number")) {
+                                addressComponents.number = component.long_name;
+                            }
+                            if (component.types.includes("locality")) {
+                                addressComponents.location = component.long_name;
+                            }
+                            if (component.types.includes("administrative_area_level_2")) {
+                                addressComponents.city = component.long_name;
+                            }
+                            if (component.types.includes("administrative_area_level_1")) {
+                                addressComponents.community = component.long_name;
+                            }
+                            if (component.types.includes("country")) {
+                                addressComponents.country = component.long_name;
+                            }
+                            if (component.types.includes("postal_code")) {
+                                addressComponents.postcode = component.long_name;
+                            }
+                        }
 
                         setProposal({
                             ...proposal,
-                            placeId,
-                            address,
-                            latitude,
-                            longitude,
+                            address: {
+                                ...proposal.address,
+                                placeId,
+                                formattedAddress,
+                                latitude,
+                                longitude,
+                                components: addressComponents,
+                            },
                         });
                     } else {
                         console.log("No results found");

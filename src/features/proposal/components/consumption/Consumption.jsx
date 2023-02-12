@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
     ConsumptionStyled,
     Container,
@@ -12,12 +11,26 @@ import {
     AxisTitle,
 } from "./styles";
 import More from "@features/proposal/components/consumption/more";
+import useProposal from "@hooks/useProposal";
+import useCalculator from "@hooks/useCalculator";
 
 const Consumption = () => {
-    const [consumption, setConsumption] = useState(140);
+    const { proposal, setProposal } = useProposal();
+    const { change, setChange, setUpdate } = useCalculator();
 
     const handleChange = (e) => {
-        setConsumption(e.target.value);
+        if (e.target.value < 30 || e.target.value > 240) {
+            return;
+        }
+        setChange(!change);
+        setProposal({
+            ...proposal,
+            consumption: {
+                ...proposal.consumption,
+                lastInvoiceEnergyCost: parseFloat(e.target.value),
+            },
+        });
+        
     };
 
     return (
@@ -38,12 +51,15 @@ const Consumption = () => {
                             min={30}
                             max={240}
                             step={10}
-                            value={consumption}
-                            onChange={handleChange}
+                            value={proposal.consumption.lastInvoiceEnergyCost}
+                            onChange={(e) =>{
+                                handleChange(e);
+                                setUpdate(true);
+                            }}
                         />
 
                         <Number>
-                            {consumption} <span>€/mes</span>
+                            {proposal.consumption.lastInvoiceEnergyCost} <span>€/mes</span>
                         </Number>
                     </NumberContainer>
 
@@ -53,8 +69,10 @@ const Consumption = () => {
                             min={30}
                             max={240}
                             step={10}
-                            value={consumption}
+                            value={proposal.consumption.lastInvoiceEnergyCost}
                             onChange={handleChange}
+                            onMouseUp={() => setUpdate(true)}
+                            onTouchEnd={() => setUpdate(true)}
                         />
                         <AxisTitle>
                             <span>30 €</span>

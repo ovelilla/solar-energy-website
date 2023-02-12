@@ -7,7 +7,7 @@ import { MapPinIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
 
 export const FormStyled = styled.form`
     position: relative;
-    height: 72px;
+    height: 64px;
     box-shadow: 0px 16px 80px rgb(0 0 0 / 15%);
     ${(p) => {
         if (p.predictions.length) {
@@ -19,6 +19,10 @@ export const FormStyled = styled.form`
             return "border-radius: 16px;";
         }
     }}
+
+    ${media(breakpoints.sm)} {
+        height: 72px;
+    }
 
     ${media(breakpoints.lg)} {
         height: 80px;
@@ -33,7 +37,7 @@ export const Field = styled.div`
     position: absolute;
     width: 100%;
     height: 100%;
-    padding: 0 24px;
+    padding: 0 16px 0 24px;
     background-color: ${white};
 
     ${(p) => {
@@ -46,6 +50,10 @@ export const Field = styled.div`
             return "border-radius: 16px;";
         }
     }}
+
+    ${media(breakpoints.sm)} {
+        padding: 0 24px;
+    }
 `;
 
 export const StyledMapPinIcon = styled(MapPinIcon)`

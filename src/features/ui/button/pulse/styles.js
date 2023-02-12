@@ -10,7 +10,14 @@ export const Button = styled.button`
     gap: 8px;
     position: relative;
     height: 48px;
-    padding: ${(p) => (p.count > 1 ? "0 16px 0 24px" : "0 16px")};
+    width: ${(p) => (p.width ? `${p.width}px` : "auto")};
+    padding: ${(p) => {
+        if (p.count > 1 && !p.loading) {
+            return "0 16px 0 24px";
+        } else {
+            return "0 16px";
+        }
+    }};
     background-color: #28365e;
     font-weight: 500;
     letter-spacing: -0.8px;
@@ -23,7 +30,6 @@ export const Button = styled.button`
         color: #ffffff;
         border-color: #1e2946;
     }
-
     &:active {
         background-color: #1e2946;
         color: #ffffff;
@@ -50,7 +56,8 @@ export const Button = styled.button`
         height: 100%;
         box-shadow: 0 0 0 rgb(0 0 0 / 0%);
         border-radius: 48px;
-        animation: pulse 4s cubic-bezier(0.66, 0, 0, 1) 2s infinite;
+        animation: ${(p) =>
+            p.loading ? "none" : "pulse 4s cubic-bezier(0.66, 0, 0, 1) 2s infinite"};
     }
 
     svg {

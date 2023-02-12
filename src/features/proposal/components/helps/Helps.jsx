@@ -1,12 +1,18 @@
 import { useState, useEffect, useRef } from "react";
 import { HelpsStyled, Title, TextContainer, Subtitle, Text, Chart, Column, Bar } from "./styles";
 import useScrollPosition from "@hooks/useScrollPosition";
+import useProposal from "@hooks/useProposal";
+import currencyFormat from "@utils/currencyFormat";
 
 const Helps = () => {
     const [isVisible, setIsVisible] = useState(false);
 
     const scrollPosition = useScrollPosition();
     const helpsRef = useRef(null);
+
+    const { proposal } = useProposal();
+
+    const percentage = proposal.summary.economic.helps / proposal.summary.economic.total * 100;
 
     useEffect(() => {
         const counter = helpsRef.current;
@@ -41,14 +47,14 @@ const Helps = () => {
                 <Column>
                     <p>Precio total de la instalación</p>
                     <Bar index={1} isVisible={isVisible}>
-                        <span>6.430 €</span>
+                        <span>{currencyFormat(proposal.summary.economic.total, 0)}</span>
                     </Bar>
                 </Column>
 
                 <Column>
                     <p>Cantidad subvencionada</p>
-                    <Bar index={2} isVisible={isVisible}>
-                        <span>1.170 €</span>
+                    <Bar index={2} isVisible={isVisible} percentage={percentage}>
+                        <span>{currencyFormat(proposal.summary.economic.helps, 0)}</span>
                     </Bar>
                 </Column>
             </Chart>

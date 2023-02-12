@@ -1,21 +1,13 @@
-import { useEffect } from "react";
-
 import { default as ProposalComponent } from "@features/proposal";
 import Loading from "@features/proposal/components/loading";
 import Header from "@features/proposal/components/header";
 
-import useProposal from "@hooks/useProposal";
+import useCalculator from "@hooks/useCalculator";
 
 const Proposal = () => {
-    const { isProposalLoading, setIsProposalLoading, proposal } = useProposal();
-
-    useEffect(() => {
-        setTimeout(() => {
-            setIsProposalLoading(false);
-        }, 4000);
-    }, []);
-
-    if (proposal.placeId && isProposalLoading) {
+    const { loading } = useCalculator();
+    
+    if (loading) {
         return (
             <>
                 <Header />

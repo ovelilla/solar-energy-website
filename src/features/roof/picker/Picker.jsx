@@ -31,7 +31,7 @@ const Picker = () => {
                     {proposal.address && (
                         <Address>
                             {width > breakpoints.sm && <Tag />}
-                            <span>{proposal.address}</span>
+                            <span>{proposal.address.formattedAddress}</span>
                         </Address>
                     )}
                 </Column>

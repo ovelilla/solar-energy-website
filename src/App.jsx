@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import { ProposalProvider } from "@context/ProposalProvider";
+import { CalculatorProvider } from "@context/CalculatorProvider";
 
 import Layout from "@shared/layouts/Layout";
 import ProtectedRoute from "@routes/ProtectedRoute";
@@ -19,9 +20,11 @@ function App() {
                     </Route>
                     <Route element={<ProtectedRoute />}>
                         <Route path="tejado" element={<Navigate to="/" />} />
-                        <Route path="tejado/:id" element={<Roof />} />
+                        <Route path="tejado/:uuid" element={<Roof />} />
                         <Route path="propuesta" element={<Navigate to="/" />} />
-                        <Route path="propuesta/:id" element={<Proposal />} />
+                        <Route element={<CalculatorProvider />}>
+                            <Route path="propuesta/:uuid" element={<Proposal />} />
+                        </Route>
                     </Route>
                 </Routes>
             </ProposalProvider>

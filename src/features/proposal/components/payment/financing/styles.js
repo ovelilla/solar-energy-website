@@ -72,38 +72,94 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     gap: 16px;
-    padding: 0 2px 24px 2px;
+    padding: 0 0 32px 0;
 
     ${media(breakpoints.md)} {
         gap: 24px;
-        padding-bottom: 32px;
+        padding-bottom: 40px;
     }
 
     ${media(breakpoints.xl)} {
         gap: 32px;
-        padding-bottom: 40px;
     }
 `;
 
-export const Item = styled.div`
+export const FeeContainer = styled.div`
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
     gap: 16px;
+    width: 100%;
+
+    ${media(breakpoints.sm)} {
+        flex-direction: row;
+        gap: 32px;
+    }
+`;
+
+export const FeeButton = styled.button`
+    display: flex;
+    flex-direction: column;
+    color: #28365e;
+`;
+
+export const FeeC = styled.button`
+    display: flex;
+    flex-direction: column;
+    color: #28365e;
+`;
+
+export const Fee = styled.div`
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.4px;
+    color: ${(p) => (p.active ? "#28365e" : gray[300])};
+    line-height: 1.4;
+
+    span {
+        font-size: 16px;
+        letter-spacing: 0;
+        span {
+            font-weight: 300;
+        }
+    }
+`;
+
+export const Time = styled.div`
+    display: flex;
+    color: ${(p) => (p.active ? "#28365e" : gray[300])};
+`;
+
+export const Line = styled.div`
+    display: flex;
+    height: 4px;
+    width: 100%;
+    margin-top: 16px;
+    border-radius: 4px;
+    background-color: ${(p) => (p.active ? "#28365e" : "transparent")};
 `;
 
 export const InfoButton = styled.button`
     display: flex;
-    justify-content: center;
     align-items: center;
-    flex-shrink: 0;
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background-color: #e0e7fb;
+    gap: 16px;
 
-    svg {
-        width: 24px;
-        height: 24px;
+    span:hover {
+        text-decoration: underline;
+    }
+
+    &::before {
+        content: "?";
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 48px;
+        height: 48px;
+        background-color: #e0e7fb;
+        border-radius: 50%;
+        font-size: 24px;
+        font-weight: 600;
     }
 `;

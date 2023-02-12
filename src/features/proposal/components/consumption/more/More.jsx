@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import Select from "react-select";
 import ArrowDown from "@shared/icons/ArrowDown";
 import {
@@ -13,8 +13,9 @@ import {
     Error,
     selectStyles,
 } from "./styles";
-
 import useForm from "@hooks/useForm";
+import useProposal from "@hooks/useProposal";
+import useCalculator from "@hooks/useCalculator";
 
 const singleFase = [
     { value: 1.15, label: "Monofásica - 1.15 kW" },
@@ -62,15 +63,47 @@ const More = ({ title }) => {
 
     const ref = useRef(null);
 
-    const { values, errors, setValues, setErrors, handleChange } = useForm({
-        kWhConsumed: 500,
-        contractedPower: { value: 3.45, label: "Monofásica - 3.45 kW" },
+    const { proposal, setProposal } = useProposal();
+    const { change, setChange, setUpdate } = useCalculator();
+
+    const { values, errors } = useForm({
+        kWhConsumedLastBill: "",
+        contractedPowerInKW: "",
     });
 
-    const handleChangeContractedPower = (value, action) => {
-        setValues({ ...values, [action.name]: value });
-        setErrors({ ...errors, [action.name]: "" });
+    const handleChangeInput = (e) => {
+        const { value, name } = e.target;
+
+        setChange(!change);
+        setProposal({
+            ...proposal,
+            consumption: {
+                ...proposal.consumption,
+                [name]: parseFloat(value),
+                monthlyEnergyConsumption:
+                    name === "kWhConsumedLastBill"
+                        ? parseFloat(value)
+                        : proposal.consumption.monthlyEnergyConsumption,
+            },
+        });
+        setUpdate(true);
     };
+
+    const handleChangeSelect = ({ value }) => {
+        setChange(!change);
+        setProposal({
+            ...proposal,
+            consumption: {
+                ...proposal.consumption,
+                contractedPowerInKW: value,
+            },
+        });
+        setUpdate(true);
+    };
+
+    const selectedOption = groupedOptions
+        .flatMap((group) => group.options)
+        .find((option) => option.value === proposal.consumption.contractedPowerInKW);
 
     return (
         <MoreStyled>
@@ -95,25 +128,29 @@ const More = ({ title }) => {
                             <Label>Kwh consumidos</Label>
                             <Input
                                 type="number"
-                                placeholder="kWh consumidos "
-                                name="kWhConsumed"
-                                value={values.kWhConsumed}
-                                error={errors.kWhConsumed.length > 0}
-                                onChange={handleChange}
+                                placeholder="kWh consumidos"
+                                name="kWhConsumedLastBill"
+                                value={proposal.consumption.kWhConsumedLastBill}
+                                error={errors.kWhConsumedLastBill.length > 0}
+                                onChange={handleChangeInput}
                             />
-                            {errors.kWhConsumed && <Error>{errors.kWhConsumed}</Error>}
+                            {errors.kWhConsumedLastBill && (
+                                <Error>{errors.kWhConsumedLastBill}</Error>
+                            )}
                         </Field>
 
                         <Field>
                             <Label>Potencia contratada kW</Label>
                             <Select
-                                value={values.contractedPower}
-                                onChange={handleChangeContractedPower}
+                                value={selectedOption}
+                                onChange={handleChangeSelect}
                                 options={groupedOptions}
-                                name="contractedPower"
-                                styles={selectStyles(errors.contractedPower)}
+                                name="contractedPowerInKW"
+                                styles={selectStyles(errors.contractedPowerInKW)}
                             />
-                            {errors.contractedPower && <Error>{errors.contractedPower}</Error>}
+                            {errors.contractedPowerInKW && (
+                                <Error>{errors.contractedPowerInKW}</Error>
+                            )}
                         </Field>
                     </Grid>
                 </Container>

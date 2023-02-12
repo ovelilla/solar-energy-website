@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import ArrowDown from "@shared/icons/ArrowDown";
 import {
     FinancingStyled,
@@ -6,21 +6,67 @@ import {
     ButtonContainer,
     Collapse,
     Container,
-    Item,
+    FeeContainer,
+    FeeButton,
+    Fee,
+    Time,
+    Line,
     InfoButton,
 } from "./styles";
 import FinancingModal from "@features/proposal/components/payment/financing-modal";
-import Checkbox from "@features/proposal/components/payment/checkbox";
 import Switch from "@features/proposal/components/panels/switch";
-import InfoIcon from "@shared/icons/Info";
+import useProposal from "@hooks/useProposal";
+import useCalculator from "@hooks/useCalculator";
 
 const Financing = ({ title }) => {
-    const [openFinancing, setOpenFinancing] = useState(false);
+    const { proposal, setProposal } = useProposal();
+    const { change, setChange, setUpdate } = useCalculator();
+
+    const open = proposal.payment.method === "financing";
+    const selectedFee = proposal.payment.financing.months === 60 || !proposal.payment.financing.months ? 0 : 1;
+
+    const [openFinancing, setOpenFinancing] = useState(open);
     const [openModalFinancing, setOpenModalFinancing] = useState(false);
     const [height, setHeight] = useState(0);
-    const [selected, setSelected] = useState(1);
+    const [selected, setSelected] = useState(selectedFee);
 
     const ref = useRef(null);
+
+    useEffect(() => {
+        setHeight(proposal.payment.method === "financing" ? ref.current.scrollHeight : 0);
+    }, []);
+
+    const handleClickButton = () => {
+        setOpenFinancing(!openFinancing);
+        setHeight(openFinancing ? 0 : ref.current.scrollHeight);
+
+        setChange(!change);
+        setProposal({
+            ...proposal,
+            payment: {
+                ...proposal.payment,
+                method: openFinancing ? "cash" : "financing",
+            },
+        });
+        setUpdate(true);
+    };
+
+    const handleClickFee = (index) => {
+        setSelected(index);
+
+        setChange(!change);
+        setProposal({
+            ...proposal,
+            payment: {
+                ...proposal.payment,
+                financing: {
+                    ...proposal.payment.financing,
+                    months: index === 0 ? 60 : 120,
+                },
+            },
+        });
+        setUpdate(true);
+    };
 
     return (
         <>
@@ -32,14 +78,7 @@ const Financing = ({ title }) => {
             )}
 
             <FinancingStyled>
-                <Button
-                    onClick={() => {
-                        setOpenFinancing(!openFinancing);
-                        setHeight(openFinancing ? 0 : ref.current.scrollHeight);
-                        setSelected(1);
-                    }}
-                    open={openFinancing}
-                >
+                <Button onClick={handleClickButton} open={openFinancing}>
                     <ButtonContainer>
                         <Switch checked={openFinancing} />
                         <span>{title}</span>
@@ -50,26 +89,32 @@ const Financing = ({ title }) => {
 
                 <Collapse ref={ref} collapseHeight={height}>
                     <Container>
-                        <Item>
-                            <Checkbox
-                                label="Fianciación a 10 años"
-                                checked={selected === 1}
-                                onChange={() => setSelected(selected === 1 ? 0 : 1)}
-                            />
-                            <InfoButton onClick={() => setOpenModalFinancing(true)}>
-                                <InfoIcon />
-                            </InfoButton>
-                        </Item>
-                        <Item>
-                            <Checkbox
-                                label="Fianciación a 15 años"
-                                checked={selected === 2}
-                                onChange={() => setSelected(selected === 2 ? 0 : 2)}
-                            />
-                            <InfoButton onClick={() => setOpenModalFinancing(true)}>
-                                <InfoIcon />
-                            </InfoButton>
-                        </Item>
+                        <FeeContainer>
+                            <FeeButton onClick={() => handleClickFee(0)}>
+                                <Fee active={selected === 0}>
+                                    {proposal.payment.financing.monthlyFee60.toFixed(2)}
+                                    <span>
+                                        €<span>/mes</span>
+                                    </span>
+                                </Fee>
+                                <Time active={selected === 0}>60 meses</Time>
+                                <Line active={selected === 0} />
+                            </FeeButton>
+                            <FeeButton onClick={() => handleClickFee(1)}>
+                                <Fee active={selected === 1}>
+                                    {proposal.payment.financing.monthlyFee120.toFixed(2)}
+                                    <span>
+                                        €<span>/mes</span>
+                                    </span>
+                                </Fee>
+                                <Time active={selected === 1}>120 meses</Time>
+                                <Line active={selected === 1} />
+                            </FeeButton>
+                        </FeeContainer>
+
+                        <InfoButton onClick={() => setOpenModalFinancing(true)}>
+                            <span>Condiciones de financiación</span>
+                        </InfoButton>
                     </Container>
                 </Collapse>
             </FinancingStyled>

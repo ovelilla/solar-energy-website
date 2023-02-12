@@ -77,16 +77,16 @@ export const Bar = styled.div`
     font-weight: 600;
 
     ${(p) => {
-        if(p.index === 1) {
+        if (p.index === 1) {
             return `
                 width: ${p.isVisible ? "100%" : "0"};
                 background-color: #f0f3fd;
-            `
-        } else if(p.index === 2) {
+            `;
+        } else if (p.index === 2) {
             return `
-                width: ${p.isVisible ? "calc(3 * 100% / 10)" : "0"};
+                width: ${p.isVisible ? p.percentage + "%" : "0"};
                 background-color: #d1dbf9;
-            `
+            `;
         }
     }}
 

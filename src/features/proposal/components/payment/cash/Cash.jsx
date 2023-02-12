@@ -1,16 +1,19 @@
 import { Summary, Header, Body, Item, ColumnLeft, ColumnRight, Icon } from "./styles";
-
 import Financing from "@features/proposal/components/payment/financing";
 import Crown from "@shared/icons/Crown";
 import Shield from "@shared/icons/Shield";
 import Chart from "@shared/icons/Chart";
+import useProposal from "@hooks/useProposal";
+import currencyFormat from "@utils/currencyFormat";
 
 const Payment = () => {
+    const { proposal } = useProposal();
+
     return (
         <Summary>
             <Header>
                 <p>Estimación precio de instalación</p>
-                <p>6.430 €</p>
+                <p>{currencyFormat(proposal.summary.economic.total)}</p>
             </Header>
 
             <Body>

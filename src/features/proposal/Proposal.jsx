@@ -5,6 +5,7 @@ import Consumption from "@features/proposal/components/consumption";
 import Faq from "@features/proposal/components/faq";
 import Footer from "@features/proposal/components/footer";
 import Helps from "@features/proposal/components/helps";
+import MonthlyEnergy from "@features/proposal/components/monthly-energy";
 import Panels from "@features/proposal/components/panels";
 import Payment from "@features/proposal/components/payment";
 import Progress from "@features/proposal/components/progress";
@@ -26,6 +27,7 @@ const Proposal = () => {
                             <Consumption />
                             <ComparisonBill />
                             <Panels />
+                            <MonthlyEnergy />
                             <Payment />
                             <Helps />
                         </Column>

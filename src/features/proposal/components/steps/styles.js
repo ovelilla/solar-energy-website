@@ -50,10 +50,30 @@ export const Container = styled.div`
     p {
         color: ${gray[500]};
     }
+
+    .swiper-button-prev,
+    .swiper-button-next {
+        top: 0;
+        width: 56px;
+        height: 56px;
+        margin: 0;
+        color: #28365e;
+        background-color: ${white};
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .swiper-button-prev {
+        left: 0;
+    }
+
+    .swiper-button-next {
+        right: 0;
+    }
 `;
 
 export const Info = styled(SwiperSlide)`
     padding-bottom: 32px;
+    height: auto;
 `;
 
 export const SlideContainer = styled.div`
@@ -61,6 +81,7 @@ export const SlideContainer = styled.div`
     flex-direction: column;
     gap: 24px;
     position: relative;
+    height: 100%;
     padding: 32px;
     background-color: rgb(250, 250, 255);
     border-radius: 16px;

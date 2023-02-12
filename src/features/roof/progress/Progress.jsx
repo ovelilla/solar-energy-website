@@ -20,7 +20,7 @@ const Progress = () => {
                 <Number isActive={step === 1} isCompleted={step > 1}>
                     {step > 1 ? <Check /> : 1}
                 </Number>
-                {width >= breakpoints.md && (
+                {width >= breakpoints.sm && (
                     <Text isActive={step === 1} isCompleted={step > 1}>
                         Ubica tu tejado
                     </Text>
@@ -33,7 +33,7 @@ const Progress = () => {
                 <Number isActive={step === 2} isCompleted={step > 2}>
                     {step > 2 ? <Check /> : 2}
                 </Number>
-                {width >= breakpoints.md && (
+                {width >= breakpoints.sm && (
                     <Text isActive={step === 2} isCompleted={step > 2}>
                         Obtén tu propuesta
                     </Text>

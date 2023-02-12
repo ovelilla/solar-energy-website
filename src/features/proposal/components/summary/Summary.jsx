@@ -20,9 +20,13 @@ import {
 import SendProposal from "@features/proposal/components/send-proposal";
 import IconButton from "@features/ui/iconbutton";
 import Sliders from "@shared/icons/Sliders";
+import useProposal from "@hooks/useProposal";
+import currencyFormat from "@utils/currencyFormat";
 
 const Summary = () => {
     const [openModalSendProposal, setOpenModalSendProposal] = useState(false);
+
+    const { proposal } = useProposal();
 
     return (
         <>
@@ -41,15 +45,17 @@ const Summary = () => {
                             <Text>
                                 <Row>
                                     <Label>Ahorro mensual</Label>
-                                    <Value>50 €</Value>
+                                    <Value>
+                                        {currencyFormat(proposal.summary.savings.monthly, 0)}
+                                    </Value>
                                 </Row>
                                 <Row>
                                     <Label>Ahorro anual</Label>
-                                    <Value>600 €</Value>
+                                    <Value>{currencyFormat(proposal.summary.savings.yearly, 0)}</Value>
                                 </Row>
                                 <Row>
                                     <LabelBold>Ahorro 25 años</LabelBold>
-                                    <ValueBold>15.000 €</ValueBold>
+                                    <ValueBold>{currencyFormat(proposal.summary.savings.yearly25, 0)}</ValueBold>
                                 </Row>
                             </Text>
                         </Section>
@@ -69,15 +75,15 @@ const Summary = () => {
                             <Text>
                                 <Row>
                                     <LabelBold>Paneles solares</LabelBold>
-                                    <ValueBold>10</ValueBold>
+                                    <ValueBold>{proposal.installation.numberPanels}</ValueBold>
                                 </Row>
                                 <Row>
                                     <Label>Potencia instalada</Label>
-                                    <Value>4,15 kW</Value>
+                                    <Value>{proposal.installation.installationPowerKw}kW</Value>
                                 </Row>
                                 <Row>
                                     <Label>Baterías</Label>
-                                    <Value>10 kW</Value>
+                                    <Value>{proposal.installation.hasBattery ? proposal.installation.battery.capacity + " kW" : "-"}</Value>
                                 </Row>
                             </Text>
                         </Section>
@@ -97,19 +103,19 @@ const Summary = () => {
                             <Text>
                                 <Row>
                                     <Label>Retorno inversión</Label>
-                                    <Value>6 años</Value>
+                                    <Value>{proposal.summary.economic.investmentReturn.toFixed(2)} años</Value>
                                 </Row>
                                 <Row>
                                     <Label>IVA (21%)</Label>
-                                    <Value>1.116 €</Value>
+                                    <Value>{currencyFormat(proposal.summary.economic.iva)}</Value>
                                 </Row>
                                 <Row>
                                     <LabelPrice>Total</LabelPrice>
-                                    <ValuePrice>6.430 €</ValuePrice>
+                                    <ValuePrice>{currencyFormat(proposal.summary.economic.total)}</ValuePrice>
                                 </Row>
                                 <Row>
                                     <Label>Ayudas</Label>
-                                    <Value>1.170 €</Value>
+                                    <Value>{currencyFormat(proposal.summary.economic.helps)}</Value>
                                 </Row>
                             </Text>
                         </Section>

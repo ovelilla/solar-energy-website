@@ -17,6 +17,7 @@ export default defineConfig({
             "@pages": path.resolve(root, "src/pages"),
             "@routes": path.resolve(root, "src/routes"),
             "@shared": path.resolve(root, "src/shared"),
+            "@utils": path.resolve(root, "src/utils"),
             "@variables": path.resolve(root, "src/variables"),
         },
     },

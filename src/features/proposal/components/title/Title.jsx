@@ -9,7 +9,7 @@ const Title = () => {
         <TitleStyled>
             <Container>
                 <h1>Aquí está tu propuesta de autoconsumo</h1>
-                <p>Esta es una estimación para la dirección {proposal.address}</p>
+                <p>Esta es una estimación para la dirección {proposal.address.formattedAddress}</p>
             </Container>
         </TitleStyled>
     );

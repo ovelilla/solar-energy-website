@@ -7,7 +7,7 @@ export const ProgressStyled = styled.div`
     align-items: center;
     justify-content: space-between;
 
-    ${media(breakpoints.md)} {
+    ${media(breakpoints.sm)} {
         gap: 16px;
     }
 `;
