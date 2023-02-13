@@ -130,7 +130,7 @@ export const ProposalProvider = ({ children }) => {
 
     const readProposal = async (uuid) => {
         try {
-            const { data } = await axios.get("/proposal/" + uuid);
+            const { data } = await axios.get("/proposal/uuid/" + uuid);
             setProposal(data);
         } catch (error) {
             console.log(error);

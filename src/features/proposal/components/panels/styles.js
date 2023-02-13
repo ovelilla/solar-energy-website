@@ -9,22 +9,22 @@ export const PanelsStyled = styled.div`
     width: 100%;
     background-color: rgb(250, 250, 255);
     border-radius: 16px;
-    scroll-margin-top: 64px;
+    scroll-margin-top: 104px;
 
     ${media(breakpoints.sm)} {
-        scroll-margin-top: 72px;
+        scroll-margin-top: 112px;
     }
 
     ${media(breakpoints.md)} {
-        scroll-margin-top: 80px;
+        scroll-margin-top: 120px;
     }
 
     ${media(breakpoints.lg)} {
-        scroll-margin-top: 88px;
+        scroll-margin-top: 128px;
     }
 
     ${media(breakpoints.xl)} {
-        scroll-margin-top: 96px;
+        scroll-margin-top: 136px;
     }
 `;
 
