@@ -82,7 +82,7 @@ const Consumption = () => {
                 </Inputs>
             </Container>
 
-            <More title="Ayúdanos a mejorar tu propuesta aportando información adicional" />
+            <More title="Mejorar tu propuesta aportando información adicional" />
         </ConsumptionStyled>
     );
 };

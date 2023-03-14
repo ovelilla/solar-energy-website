@@ -30,9 +30,14 @@ const Summary = () => {
 
     return (
         <>
-            {openModalSendProposal && (
-                <SendProposal onClose={() => setOpenModalSendProposal(false)} />
-            )}
+            <SendProposal
+                open={openModalSendProposal}
+                onClose={() => {
+                    console.log("close");
+                    setOpenModalSendProposal(false);
+                }}
+            />
+
             <SummaryStyled>
                 <Container>
                     <Header>
@@ -51,11 +56,15 @@ const Summary = () => {
                                 </Row>
                                 <Row>
                                     <Label>Ahorro anual</Label>
-                                    <Value>{currencyFormat(proposal.summary.savings.yearly, 0)}</Value>
+                                    <Value>
+                                        {currencyFormat(proposal.summary.savings.yearly, 0)}
+                                    </Value>
                                 </Row>
                                 <Row>
                                     <LabelBold>Ahorro 25 años</LabelBold>
-                                    <ValueBold>{currencyFormat(proposal.summary.savings.yearly25, 0)}</ValueBold>
+                                    <ValueBold>
+                                        {currencyFormat(proposal.summary.savings.yearly25, 0)}
+                                    </ValueBold>
                                 </Row>
                             </Text>
                         </Section>
@@ -83,7 +92,11 @@ const Summary = () => {
                                 </Row>
                                 <Row>
                                     <Label>Baterías</Label>
-                                    <Value>{proposal.installation.hasBattery ? proposal.installation.battery.capacity + " kW" : "-"}</Value>
+                                    <Value>
+                                        {proposal.installation.hasBattery
+                                            ? proposal.installation.battery.capacity + " kW"
+                                            : "-"}
+                                    </Value>
                                 </Row>
                             </Text>
                         </Section>
@@ -103,7 +116,9 @@ const Summary = () => {
                             <Text>
                                 <Row>
                                     <Label>Retorno inversión</Label>
-                                    <Value>{proposal.summary.economic.investmentReturn.toFixed(2)} años</Value>
+                                    <Value>
+                                        {proposal.summary.economic.investmentReturn.toFixed(2)} años
+                                    </Value>
                                 </Row>
                                 <Row>
                                     <Label>IVA (21%)</Label>
@@ -111,7 +126,9 @@ const Summary = () => {
                                 </Row>
                                 <Row>
                                     <LabelPrice>Total</LabelPrice>
-                                    <ValuePrice>{currencyFormat(proposal.summary.economic.total)}</ValuePrice>
+                                    <ValuePrice>
+                                        {currencyFormat(proposal.summary.economic.total)}
+                                    </ValuePrice>
                                 </Row>
                                 <Row>
                                     <Label>Ayudas</Label>

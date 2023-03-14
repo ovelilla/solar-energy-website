@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import axios from "@config/axios";
 import useProposal from "@hooks/useProposal";
 
@@ -35,7 +35,6 @@ export const CalculatorProvider = ({ children }) => {
 
     useEffect(() => {
         if (update) {
-            console.log("update");
             updateProposal();
             setUpdate(false);
         }
@@ -169,7 +168,7 @@ export const CalculatorProvider = ({ children }) => {
             ...proposal,
             consumption: {
                 ...proposal.consumption,
-                invoiceEnergyCostWithSolar: result.savings.billingWithSolar / 12,
+                invoiceEnergyCostWithSolar: result.savings.monthlyBillingWithSolar,
             },
             installation: result.installation,
             summary: {
@@ -538,6 +537,7 @@ export const CalculatorProvider = ({ children }) => {
 
         const billingWithoutSolar = annualConsumptionEuros;
         const billingWithSolar = annualConsumptionEuros - yearlySavings;
+        const monthlyBillingWithSolar = billingWithSolar / 12 < 30 ? 30 : billingWithSolar / 12;
 
         const reductionPercentage = (yearlySavings / billingWithoutSolar) * 100;
 
@@ -624,6 +624,7 @@ export const CalculatorProvider = ({ children }) => {
                 },
                 billingWithoutSolar,
                 billingWithSolar,
+                monthlyBillingWithSolar,
                 reductionPercentage,
             },
             rate,

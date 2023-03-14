@@ -6,6 +6,7 @@ import { breakpoints, media, section } from "@shared/styles/sizes";
 export const PanelsStyled = styled.div`
     display: flex;
     flex-direction: column;
+    position: relative;
     width: 100%;
     background-color: rgb(250, 250, 255);
     border-radius: 16px;
@@ -32,7 +33,7 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     gap: 32px;
-    padding: 24px;
+    padding: 32px 24px;
 
     ${media(breakpoints.md)} {
         gap: 40px;
@@ -48,7 +49,7 @@ export const Container = styled.div`
 export const Text = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 24px;
 
     h2 {
         font-size: 20px;
@@ -254,17 +255,13 @@ export const InfoButton = styled.button`
     display: flex;
     align-items: center;
     gap: 16px;
-    /* padding: 16px; */
+    position: absolute;
+    top: 24px;
+    right: 24px;
     font-weight: 500;
-    /* background-color: #e0e7fb;
-    background-color: rgb(245, 246, 255); */
     border-radius: 8px;
     text-align: left;
     letter-spacing: -0.4px;
-
-    /* ${media(breakpoints.md)} {
-        padding: 24px 32px;
-    } */
 
     &:hover span {
         text-decoration: underline;

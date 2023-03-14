@@ -3,13 +3,35 @@ import { white, gray, slate } from "@shared/styles/colors";
 import { shadows } from "@shared/styles/shadows";
 import { breakpoints, media, section } from "@shared/styles/sizes";
 
-export const SendProposalStyled = styled.div`
+export const Slide = styled.div`
+    display: flex;
+    overflow: hidden;
+`;
+
+export const Step = styled.div`
+    min-width: 100%;
     display: flex;
     flex-direction: column;
     gap: 16px;
+    padding: 2px;
+    transition: transform 0.3s ease-in-out;
+    overflow-y: auto;
+    ${({ active }) => {
+        if (active) {
+            return `
+                transform: translateX(0);
+            `;
+        }
+        return `
+            transform: translateX(-100%);
+        `;
+    }}
 `;
 
 export const Title = styled.h4`
+    display: flex;
+    align-items: center;
+    gap: 16px;
     font-size: 20px;
     font-weight: 600;
 `;
@@ -23,7 +45,10 @@ export const Form = styled.form`
     display: flex;
     flex-direction: column;
     gap: 16px;
-    margin-top: 16px;
+
+    ${media(breakpoints.sm)} {
+        margin-top: 16px;
+    }
 
     button[type="submit"] {
         margin-top: 24px;
@@ -54,12 +79,12 @@ export const Input = styled.input`
 
     &:focus {
         box-shadow: ${({ error }) =>
-        error ? "rgb(220 38 38) 0px 0px 0px 2px" : "rgb(105 121 162) 0px 0px 0px 2px"};
+            error ? "rgb(220 38 38) 0px 0px 0px 2px" : "rgb(105 121 162) 0px 0px 0px 2px"};
     }
 
     &:hover:not(:focus) {
         box-shadow: ${({ error }) =>
-        error ? "rgb(220 38 38) 0px 0px 0px 1px" : "rgb(105 121 162) 0px 0px 0px 1px"};
+            error ? "rgb(220 38 38) 0px 0px 0px 1px" : "rgb(105 121 162) 0px 0px 0px 1px"};
     }
 
     &::placeholder {
@@ -78,4 +103,12 @@ export const Notice = styled.p`
     font-size: 13px;
     color: rgb(122, 124, 163);
     letter-spacing: -0.2px;
+`;
+
+export const Back = styled.div`
+    svg {
+        color: ${slate[400]};
+        width: 24px;
+        height: 24px;
+    }
 `;

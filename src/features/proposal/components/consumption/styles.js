@@ -33,7 +33,7 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     gap: 32px;
-    padding: 24px;
+    padding: 32px 24px;
 
     ${media(breakpoints.md)} {
         gap: 48px;
@@ -49,7 +49,7 @@ export const Container = styled.div`
 export const Text = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 24px;
 
     h2 {
         font-size: 20px;

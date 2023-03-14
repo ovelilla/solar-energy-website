@@ -15,8 +15,6 @@ const ComparisonBill = () => {
     const lastInvoiceEnergyCost = proposal.consumption.lastInvoiceEnergyCost;
     const invoiceEnergyCostWithSolar = proposal.consumption.invoiceEnergyCostWithSolar;
 
-    const resultInvoice = invoiceEnergyCostWithSolar < 0 ? 0 : invoiceEnergyCostWithSolar;
-
     const percentage = (invoiceEnergyCostWithSolar / lastInvoiceEnergyCost) * 100;
     const resultPercentage = percentage < 0 ? 0 : percentage;
 
@@ -44,7 +42,7 @@ const ComparisonBill = () => {
                 <Column>
                     <p>Factura con autoconsumo</p>
                     <Bar index={2} isVisible={isVisible} percentage={resultPercentage}>
-                        <span>{currencyFormat(resultInvoice, 0)}</span>
+                        <span>{currencyFormat(invoiceEnergyCostWithSolar, 0)}</span>
                     </Bar>
                 </Column>
             </Chart>

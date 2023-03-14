@@ -21,6 +21,7 @@ import Information from "@features/proposal/components/panels/information";
 import Battery from "@features/proposal/components/panels/battery";
 import Check from "@shared/icons/Check";
 import Info from "@shared/icons/Info";
+import QuestionLg from "@shared/icons/QuestionLg";
 import useProposal from "@hooks/useProposal";
 import useCalculator from "@hooks/useCalculator";
 
@@ -65,25 +66,24 @@ const Panels = () => {
 
     return (
         <>
-            {openModalCustomOffer && (
-                <CustomOffer
-                    open={openModalCustomOffer}
-                    onClose={() => setOpenModalCustomOffer(false)}
-                />
-            )}
+            <CustomOffer
+                open={openModalCustomOffer}
+                onClose={() => setOpenModalCustomOffer(false)}
+            />
 
-            {openModalInformation && (
-                <Information
-                    open={openModalInformation}
-                    onClose={() => setOpenModalInformation(false)}
-                />
-            )}
+            <Information
+                open={openModalInformation}
+                onClose={() => setOpenModalInformation(false)}
+            />
 
             <PanelsStyled id="panels">
                 <Container>
                     <Text>
                         <h2>Número de paneles</h2>
-                        <p>Añade o quita paneles para ajustar tu propuesta</p>
+                        <p>
+                            Paneles recomendados: {proposal.installation.estimatedModules}. Añade o
+                            quita paneles para ajustar tu propuesta
+                        </p>
                     </Text>
 
                     <Inputs>
@@ -94,7 +94,7 @@ const Panels = () => {
                                 max={300}
                                 step={1}
                                 value={proposal.installation.numberPanels}
-                                onChange={(e) =>{
+                                onChange={(e) => {
                                     handleChange(e);
                                     setUpdate(true);
                                 }}
@@ -164,9 +164,9 @@ const Panels = () => {
 
                     <InfoButton onClick={() => setOpenModalInformation(true)}>
                         <InfoIcon>
-                            <Info />
+                            <QuestionLg />
                         </InfoIcon>
-                        <span>¿Que tipo de instalación necesito?</span>
+                        {/* <span>¿Que tipo de instalación necesito?</span> */}
                     </InfoButton>
                 </Container>
 

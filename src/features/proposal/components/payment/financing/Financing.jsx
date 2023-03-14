@@ -23,7 +23,8 @@ const Financing = ({ title }) => {
     const { change, setChange, setUpdate } = useCalculator();
 
     const open = proposal.payment.method === "financing";
-    const selectedFee = proposal.payment.financing.months === 60 || !proposal.payment.financing.months ? 0 : 1;
+    const selectedFee =
+        proposal.payment.financing.months === 60 || !proposal.payment.financing.months ? 0 : 1;
 
     const [openFinancing, setOpenFinancing] = useState(open);
     const [openModalFinancing, setOpenModalFinancing] = useState(false);
@@ -70,12 +71,10 @@ const Financing = ({ title }) => {
 
     return (
         <>
-            {openModalFinancing && (
-                <FinancingModal
-                    open={openModalFinancing}
-                    onClose={() => setOpenModalFinancing(false)}
-                />
-            )}
+            <FinancingModal
+                open={openModalFinancing}
+                onClose={() => setOpenModalFinancing(false)}
+            />
 
             <FinancingStyled>
                 <Button onClick={handleClickButton} open={openFinancing}>
